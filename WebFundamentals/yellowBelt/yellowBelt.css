@@ -1,0 +1,195 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#wrapper{
+    padding: 0px;
+    margin: 0px;
+    max-width: 1080px;
+}
+.header{
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: 10px;
+    background: #aaa; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#fff, #aaa); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff, #aaa); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff, #aaa); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff, #aaa); /* Standard syntax */
+}
+.headImg{
+    margin: 0px;
+    padding: -10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.header ul{
+    display: inline-block;
+    vertical-align: top;
+}
+.header ul a{
+    text-decoration: none;
+    list-style-type: none;
+    color: #000;
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 10px;
+}
+.menuItem{
+    display: inline;
+    vertical-align: top;
+}
+.menu ul a{
+    text-decoration: none;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+.menu li{
+    vertical-align: middle;
+    padding: 10px;
+    border-right: 1px solid lightgray;
+}
+.menuItem{
+    margin: 0px;
+}
+.form{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 150px;
+}
+input[type=text]{
+    vertical-align: top;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-right: 0px;
+    padding: 10px;
+}
+input[type=submit]{
+    vertical-align: top;
+    background-color: #3f789d;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-right: 10px;
+    margin-left: -10px;
+    padding: 10px;
+}
+.body{
+    margin: 0px;
+}
+.bodyImg{
+    width: 100%;
+    margin-bottom: 0px;
+}
+.bodyMenu{
+    list-style-type: none;
+    margin-top: -5px;
+    padding: 10px;
+    background-color: #4C4D4E;
+    width: 1060px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 25px;
+}
+.bodyMenu li{
+    list-style-type: none;
+    display: inline;
+    padding: 10px;
+}
+.bodyMenu a{
+    text-decoration: none;
+    color: #4C87AF;
+}
+.bodyMenu a:hover{
+   color: #fff;
+}
+.bodyMiddle{
+    display: inline-block;
+}
+.bodyHead {
+    border: 1px solid lightgray;
+    width: 1038px;
+    padding: 20px;
+}
+.bodyHead h2{
+    display: inline;
+    border-right: 1px solid lightgray;
+    color: #aaa;
+    padding: 20px;
+    margin: 20px;
+    font-size: 32px;
+}
+.act1{
+    display: inline;
+    background-color: #4A82A7;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+    padding: 5px 20px 5px 20px;
+    margin-left: 100px;
+}
+.bodyContent{
+    max-width: 1080px;
+    display: inline-block;
+    background: #aaa; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#fff, #aaa); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff, #aaa); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff, #aaa); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff, #aaa); /* Standard syntax */    
+    border: 1px solid lightgray;
+}
+.content{
+    display: inline-block;
+    max-width: 225px;
+    margin: 5;
+    padding: 10px;
+    border-right: 1px solid lightgray;
+}
+.contentTop{
+    display: inline-block;
+    padding: 5px;
+    vertical-align: middle;
+}
+.contentA{
+    width: 100%;
+}
+.Act2{
+    width: 100%;
+    background-color: #5EB6F5;
+    border-radius: 5px;
+    color: #eee;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+}
+.bodyBottom{
+    background: #fff;
+    display: inline-block;
+}
+.bottomInfo{
+    display: inline-block;
+    vertical-align: top;
+}
+.bottomHead{
+    display: inline-block;
+    text-align: left;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 15px;
+    width: 90%;
+}
+.bottomInfo ul{
+    display: block;
+    margin: 10px;
+}
+.bottomInfo ul, .bottomInfo li, .bottomInfo a{
+    list-style-type: none;
+    text-decoration: none;   
+}
+.bottomInfo a{
+    color: #aaa;
+    margin-left: -40px;
+}
+.footer{
+    padding: 10px 0 10px 0;
+    border-top: 1px solid lightgray;
+}
