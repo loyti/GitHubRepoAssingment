@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+    color: red;
+
+}
+p{
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+}
+.number{
+    background-color: red;
+    padding: 50px;
+    margin: 20px;
+}
+.player{
+    background-color: red;
+    padding: 50px;
+    margin: 20px;
+}
