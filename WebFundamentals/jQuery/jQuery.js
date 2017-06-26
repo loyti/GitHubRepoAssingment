@@ -20,6 +20,10 @@ $(document).ready(function(){
     $('#clickMe2').click(function(){
         $('.bodyTop').slideDown();
     })
+    $('#clickMe2').hover(function(){
+        $('bodyMiddle').before('<h2>Don\'t move or I\'ll disappear!</h2>')
+    }, function (){$('bodyMiddle').before()
+    })
     $('#clickMe3').click(function(){
         $('.bodyTop').slideToggle("fast");
     })
@@ -27,7 +31,9 @@ $(document).ready(function(){
         $('.bodyMiddle').fadeOut('slow')
     }, function(){$('.bodyMiddle').fadeIn('fast')
     })
-    $('clickMe3').hover(function(){
-        $(h2).addClass("addColor")
+    $('h2').hover(function(){
+        $('h2').addClass("addColor")
+    },
+    function (){$('h2').removeClass('addColor')
     })
 });
