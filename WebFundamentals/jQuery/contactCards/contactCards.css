@@ -31,15 +31,19 @@ input[type=submit]{
     background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
     background: -webkit-linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
 }
-#userInfo{
-    display: inline;
-    margin: 20px;
-    padding: 20px;
-}
+
 #allContacts{
     display:inline-block;
     vertical-align: top;
     margin: 20px;
+}
+.card{
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+
 }
 h3{
     margin: 20px;
