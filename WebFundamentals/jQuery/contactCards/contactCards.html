@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practice with jQuery</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="contactCards.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="contactCards.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Contact Cards for Friends</h1>
+        <div id="collect">
+            <h2>Please complete the form to add new contacts</h2>
+            <form id="collectID">
+                <p>Name: <input type="text" class="nameFL" placeholder="First & Last Name"></p>
+                <p>Email: <input type="text" class="email" placeholder="Email"></p>
+                <p>Description: <input type="text" class="about" placeholder="About You"></p>
+                <input type="submit" class="addUser" value="Add New User">
+            </form>
+        </div>
+        <div id="allContacts">
+            <h2>See your list of Friends Below</h2>
+            <div id="contact">
+                <h3 id="cName">Brice Prather</h3>
+                <h4 id="cEmail"><a href="mailto:brice@loyti.com">brice@loyti.com</a></h4>
+                <p id="cAbout">Soon to be FULL STACK DEVELOPER</p>
+            </div>
+            <div id="newContact">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
