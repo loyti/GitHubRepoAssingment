@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practice with jQuery</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="addUser.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="addUser.js"></script>
+</head>
+<body>
+    <h1>Adding Users to a group</h1>
+    <div id="collect">
+        <form id="collectID">
+            <input type="text" class="firstName" placeholder="First Name">First Name
+            <input type="text" class="lastName" placeholder="Last Name">Last Name
+            <input type="number" class="phoneNo" placeholder="Phone #">Phone #
+            <input type="text" class="email" placeholder="Email">Email
+            <input type="submit" class="addUser" value="Add New User">
+        </form>
+        <h3>See your list of Users Below</h3>
+        <table id="userInfo">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Contact #</th>
+            </tr>
+        </table>        
+    </div>
+</body>
+</html>

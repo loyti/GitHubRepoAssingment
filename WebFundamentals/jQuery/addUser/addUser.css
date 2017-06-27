@@ -1,0 +1,57 @@
+#collect{
+    display: inline;
+}
+#collectID{
+    width: 100px;
+    margin: 50px;
+    padding: 20px;
+}
+form{
+    width: 100px;
+    margin: 50px;
+    padding: 20px;
+    text-align: center;
+}
+input[type=text],input[type=number]{
+    margin: 20px;
+    padding: 20px 40px 20px 40px;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+}
+input[type=submit]{
+    margin: 20px;
+    padding: 20px 40px 20px 40px;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8), rgba(0, 0, 0, .2));
+}
+#userInfo{
+    display: inline;
+    margin: 20px;
+    padding: 20px;
+}
+h3{
+    margin: 20px;
+}
+table{
+    text-align: center;
+}
+th{
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+}
+td {
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+}
+#newUser{
+    display: inline;
+    margin: 20px;
+    padding: 20px;
+    color: #000;
+}
