@@ -1,0 +1,1 @@
+/*var HTMLstring = ""; for(var i = 1; i < 152; i++){ HTMLstring += '<img src="http://pokeapi.co/media/img/'+[i]+'.png">' }*/
