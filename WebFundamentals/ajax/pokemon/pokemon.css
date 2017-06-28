@@ -1,0 +1,19 @@
+#wrapper{
+    margin: 20px;
+
+}
+.pokedexI{
+    margin: 20px;
+    padding: 20px;
+    display: inline-block;
+    border: 10px solid red;
+}
+.pokemonL>img{
+    margin: 20px;
+    width: 100px;
+    display: inline-block;
+}
+.pokeI{
+    width: 100px;
+    display: block;
+}
