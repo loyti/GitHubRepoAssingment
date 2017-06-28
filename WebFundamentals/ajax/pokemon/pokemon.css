@@ -1,5 +1,6 @@
 #wrapper{
     margin: 20px;
+    display: inline-block;
 
 }
 .pokedexI{
@@ -14,6 +15,6 @@
     display: inline-block;
 }
 .pokeI{
-    width: 100px;
+    width: 200px;
     display: block;
 }
