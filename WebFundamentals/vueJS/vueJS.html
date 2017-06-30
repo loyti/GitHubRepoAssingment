@@ -9,27 +9,34 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1>Practice with <em>vue.JS</em></h1>
+        <h1>The <em>Honey Do</em> List</h1>
         <h2>Please enter item information for list below</h2>
-        
-        <div id="todoList">
-            <form v-on:submit.prevent="addItem">
-                <input v-model="name" type="text" placeholder="Item Name" name="name">
-                <input v-model="description" type="text" placeholder="Item Description" name="description">
-                <input type="submit" value="Add Item to List">
-            </form>
-
-            <h3>Incomplete</h3>
-            <ul v-for="item in itemsList">
-                <li>{{item.name}} - {{item.description}} <button v-on:click="changeStatus()">Mark Complete</button><button v-on:click="removeItem(item.id)">Delete Item</button></li>
-            </ul>
-
-            <h3>Complete</h3>
-            <ul v-for="item in itemsList">
-                <li>{{item.name}} - {{item.description}} <button v-on:click="changeStatus">Mark Complete</button><button v-on:click="removeItem(item.id)">Delete Item</button></li>
-            </ul>
+        <div id="viewAll">
+            <div id="todoList">
+                <form v-on:submit.prevent="addItem">
+                    <input v-model="name" type="text" placeholder="Item Name" name="name">
+                    <input v-model="description" type="text" placeholder="Item Description" name="description">
+                    <input type="submit" value="Add Item to List">
+                </form>
+                <h3>Incomplete</h3>
+                <ul v-for="item in itemsList">
+                    <li v-bind:class="{ complete: item.status }" v-if="!item.status">{{ item.name }} - {{ item.description }} <button v-on:click="changeStatus(item.id)">Mark Complete</button><button v-on:click="removeItem(item.id)">Delete Item</button></li>
+                </ul>
+                <h3>Complete</h3>
+                <ul v-for="item in itemsList">
+                    <li v-bind:class="{ complete: item.status }" v-if="item.status">{{ item.name }} - {{ item.description }} <button v-on:click="changeStatus(item.id)">Mark Complete</button><button v-on:click="removeItem(item.id)">Delete Item</button></li>
+                </ul>
+            </div>
+            <div class="listInfo">
+                <h3>Check out information within this tab for a global view of you list</h3>
+                <div class="allDone">
+                    
+                    <p>There are {{ incomplete }} incomplete items remaining on your list</p>
+                    <p>There are {{ complete }} items completed</p>
+                    <p>There have been {{ totalCount }} items on the list</p> 
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
 <script type="text/javascript" src="vueJS.js"></script>    

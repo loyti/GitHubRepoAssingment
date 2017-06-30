@@ -9,36 +9,54 @@ var ToDoMaker = (function (){
             this.createdAt = new Date();
         }
 }());
-new Vue({
-    el: '#todoList',
+
+var todoList = new Vue({
+    el: '#viewAll',
     data: {
         itemsList: [],
         name:"",
-        description:"", 
-        status:false
-        
+        description:"",
+        totalCount: 0
+    },
+    computed:{
+        complete: function(){
+            var count = 0;
+            for (var i = 0; i < this.itemsList.length; i++){
+                if (this.itemsList[i].status == true){
+                    count++;
+                }
+            }
+            return count;
+        },
+        incomplete: function(){
+            return this.itemsList.length - this.complete;
+        },
+        total: function(){
+            return this.totalCount;
+        }
     },
     methods: {
         addItem: function () {
-        var newItem = new ToDoMaker(this.name, this.description);
-        this.itemsList.push(newItem);
-        console.log(newItem);
+            var newItem = new ToDoMaker(this.name, this.description);
+            this.itemsList.push(newItem);
+            this.name = "";
+            this.description = "";
+            this.totalCount++;
         },
         removeItem: function(loseItem) {
-            console.log("test");
             for (var i = 0; i < this.itemsList.length; i++){
-                if (this.itemsList[i].id = loseItem){
+                if (this.itemsList[i].id == loseItem){
                     this.itemsList.splice(i,1);
                 }
             }
         },
         changeStatus: function(checkStatus) {
             for (var i = 0; i < this.itemsList.length; i++){
-                if ( this.itemsList[i].status = checkStatus){
-                    this.itemList[i].status = !checkStatus;
-                }
-            console.log(status);
+                if (todoList.itemsList[i].id == checkStatus){
+                    this.itemsList[i].status = !this.itemsList[i].status
+                } 
             }
+        
         }
-    }    
-})
+    }
+})    
