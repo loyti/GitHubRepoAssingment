@@ -4,29 +4,34 @@
     <title>Practice with vue.js</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="vueJS.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="vueJS.js"></script>
     <script src="https://unpkg.com/vue"></script>
+    
 </head>
 <body>
     <div class="wrapper">
         <h1>Practice with <em>vue.JS</em></h1>
+        <h2>Please enter item information for list below</h2>
         
-        <div id="app-7">
-            <ol>
-    <!--
-      Now we provide each todo-item with the todo object
-      it's representing, so that its content can be dynamic.
-      We also need to provide each component with a "key",
-      which will be explained later.
-    -->
-                <todo-item
-                    v-for="item in groceryList"
-                    v-bind:todo="item"
-                    v-bind:key="item.id">
-                </todo-item>
-            </ol>
+        <div id="todoList">
+            <form v-on:submit.prevent="addItem">
+                <input v-model="name" type="text" placeholder="Item Name" name="name">
+                <input v-model="description" type="text" placeholder="Item Description" name="description">
+                <input type="submit" value="Add Item to List">
+            </form>
+
+            <h3>Incomplete</h3>
+            <ul v-for="item in itemsList">
+                <li>{{item.name}} - {{item.description}} <button v-on:click="changeStatus()">Mark Complete</button><button v-on:click="removeItem(item.id)">Delete Item</button></li>
+            </ul>
+
+            <h3>Complete</h3>
+            <ul v-for="item in itemsList">
+                <li>{{item.name}} - {{item.description}} <button v-on:click="changeStatus">Mark Complete</button><button v-on:click="removeItem(item.id)">Delete Item</button></li>
+            </ul>
         </div>
+
     </div>
+</div>
+<script type="text/javascript" src="vueJS.js"></script>    
 </body>
 </html>
