@@ -14,7 +14,8 @@ new Vue({
     data: {
         itemsList: [],
         name:"",
-        description:""
+        description:"", 
+        status:false
         
     },
     methods: {
@@ -31,10 +32,10 @@ new Vue({
                 }
             }
         },
-        changeStatus: function() {
+        changeStatus: function(checkStatus) {
             for (var i = 0; i < this.itemsList.length; i++){
-                if ( this.item[i].status = false){
-                    this.itemList.status = true;
+                if ( this.itemsList[i].status = checkStatus){
+                    this.itemList[i].status = !checkStatus;
                 }
             console.log(status);
             }
