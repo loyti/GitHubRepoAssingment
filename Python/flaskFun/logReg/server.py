@@ -3,7 +3,10 @@ from mysqlconnection import MySQLConnector
 from flask.ext.bcrypt import Bcrypt
 from flask.ext.bcrypt import generate_password_hash
 import re
+from datetime import datetime, timedelta
 import bcrypt
+import os,binascii
+
 
 
 # create a regular expression object that we can use run operations on
@@ -57,14 +60,11 @@ def register():
 		check_email = mysql.query_db('SELECT * FROM users WHERE email = :email', {'email': form['email']})
 		if len(check_email) > 0:
 			flash("Account at that email already exists", 'errors')
-
 		else:
 			query = """INSERT INTO users 
 			(first_name, last_name, email, password, created_at, updated_at) 
-			VALUES (:first_name, :last_name, :email, :password, NOW(), NOW())"""
-			
+			VALUES (:first_name, :last_name, :email, :password, NOW(), NOW())"""		
 			pw_hash = bcrypt.generate_password_hash('password')
-			
 			data = {
 				'first_name': form['first_name'],
 				'last_name': form['first_name'],
@@ -85,14 +85,15 @@ def login():
 	form = request.form
 	if EMAIL_REGEX.match(form['email']):
 		users = mysql.query_db('SELECT * FROM users WHERE email = :email', {'email': form['email']})
+		
         if len(users) > 0:
             user = users[0]
             if bcrypt.check_password_hash(user['password'], form['password']):
                 session['current_user'] = user['id']
                 flash("Successful login! Welcome!", "success")
-                return render_template('theWall.html')
+                return redirect('/theWall')
 
-	flash('Invalid login credentials.', 'errors')
+	flash('Poor login credentials. Please try again', 'errors')
 	return redirect('/')
 
 
@@ -100,10 +101,14 @@ def login():
 def theWall():
 	if 'current_user' not in session:
 		flash("You must be logged in to go there!", "errors")
-        return redirect('/theWall')
+		return redirect('/')
 	
 	current_user = mysql.query_db("SELECT * FROM users WHERE id = :id", {"id": session['current_user']})
-	return render_template('theWall.html', user=current_user[0])
+	curr_messages = """SELECT users.first_name, users.last_name, DATE_FORMAT(messages.created_at,'%M %D %Y at %H:%i%p') AS created_at, messages.message FROM messages JOIN users ON users.id = messages.user_id ORDER BY messages.created_at DESC"""
+	current_messages = mysql.query_db(curr_messages)
+	curr_comments = """SELECT users.first_name, users.last_name, DATE_FORMAT(comments.created_at,'%M %D %Y at %H:%i%p') AS created_at, comments.comment, comments.id, comments.user_id FROM comments JOIN users ON users.id = comments.user_id ORDER BY comments.created_at"""
+	current_comments = mysql.query_db(curr_comments)
+	return render_template('theWall.html', user=current_user[0], messages=current_messages, comments=current_comments)
 
 @app.route('/makeMessage', methods=["POST"])
 def makeMessage():
@@ -112,40 +117,57 @@ def makeMessage():
 		return redirect('/')
 
 	form = request.form
-	errors = []
 
 	if len(form['message']) == 0:
-		errors.append('Please enter a message to post.')
+		flash('Please enter a message to post.')
 		return redirect('/theWall')
-	if len(errors) > 0: 
-		for error in errors:
-			flash(error,'errors')
-	else:
-		query = """INSERT INTO messages (message, created_at, updated_at) 
-			VALUES (:message, NOW(), NOW())"""
-		curr_msg = mysql.query_db("SELECT * FROM messages JOIN users ON users.user_id = messages.user_id", {"message": form['message']})
-		data = {'id': message_id, 'message': message}
-		message_id = mysql.query_db(query, form['message'])				
 	
-	current_user = mysql.query_db("SELECT * FROM users WHERE id = :id", {"id": session['current_user']})
+	query = """INSERT INTO messages (message, created_at, updated_at, user_id) 
+		VALUES (:message, NOW(), NOW(), :user_id)"""
+	try: 
+		curr_msg = mysql.query_db(query, {"message": form['message'], "user_id": session['current_user']})
+		flash('Congrats! Your message is posted!')
+	except: 
+			flash('OH $#@^! Something is wrong. Please try again')
 	return redirect('/theWall')
 
 @app.route('/makeComment', methods=["POST"])
 def makeComment():
+	if 'current_user' not in session:
+		flash("You must be logged in to go there!", "errors")
+		return redirect('/')
+
 	form = request.form
-	errors = []
 
 	if len(form['comment']) == 0:
-		flash('')
-		errors.append('Please enter a comment to reply.')
+		flash('Please enter a comment to reply.')
 		return redirect('/theWall')
-	if len(errors) > 0: 
-		for error in errors:
-			flash(error,'errors')
-	else:
-		query = """INSERT INTO comments (comment, created_at, updated_at) 
-			VALUES (:comment, NOW(), NOW())"""
-		comment_id = mysql.query_db(query, form['comment'])
+	query = """INSERT INTO comments (comment, created_at, updated_at, message_id, user_id) 
+		VALUES (:comment, NOW(), NOW(), :message_id, :user_id)"""
+	#try: 
+	curr_comm = mysql.query_db(query, {"comment": form['comment'], "message_id" :form['message_id'], "user_id": session['current_user']})
+	#	flash('Congrats! Your comment is posted!')
+	#except: 
+	#	flash('OH $#@^! Something is wrong. Please try again')
+	return redirect('/theWall')
+
+@app.route('/deleteMessage')
+def deleteMessage():
+		form = request.form
+		date = form['message_time']
+		timeLeft = datetime.strptime(date, '%Y-%m-%d %H:%i:%S')
+		result = datetime.now() - timeLeft
+		if result < timedelta(minutes=30):
+			delete_query = "DELETE FROM messages WHERE id = :id;"
+			query_data = {'id': form['delete']}
+			try: 
+				delete_message = mysql.query_db(delete_query, query_data)
+				flash('Say goodbye! The message is gone forever.')
+			except: 
+				flash('OH $#@^! Something is wrong. Please try again')
+		else: 
+			flash("It's been too long and your message is here to stay forever!")
+		
 		return redirect('/theWall')
 
 @app.route('/logout')

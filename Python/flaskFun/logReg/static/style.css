@@ -36,12 +36,55 @@ fieldset {
 .wallHeader {
 	display: inline-block;
 }
-#wallMessage {
+.messageBoard {
 	display: inline-block;
 	background: rgba(0,0,0,.5);
 	color: #fff;
 	margin: 20px;
 	padding: 20px;
+}
+.messages {
+	display: inline-block;
+	background: rgba(0,0,0,.25);
+	color: #fff;
+	margin: 20px;
+	padding: 20px;
+}
+.userMessage {
+	display: inline-block;
+	background: rgba(0,0,0,.25);
+	color: #fff;
+	margin: 20px;
+	padding: 20px;
+	border-radius: 5px;
+	width: 90%;
+	flex-wrap: wrap;
+}
+.userComment {
+	display: block;
+	background: rgba(0,0,0,.25);
+	color: #fff;
+	margin: 20px;
+	padding: 20px;
+	border-radius: 5px;
+	width: 90%;
+	flex-wrap: wrap;
+}
+.newComment{
+	display: block;
+	background: rgba(0,0,0,.25);
+	color: #fff;
+	margin: 20px;
+	padding: 20px;
+	border-radius: 5px;
+	width: 90%;
+	flex-wrap: wrap;
+	font-size: 20px;
+	font-weight: bolder;
+	text-align: center;
+}
+.delmessages {
+	display: inline-block;
 }
 input[type=submit]{
 	width: 90%;

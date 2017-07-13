@@ -12,15 +12,12 @@
 	<div class="messages">
 		<form action="/makeMessage" method="POST" id="wallMessage">
 			<fieldset>
-				<label>Post a Message
+				<label>Post New Message
 					<input type="textarea" name="message">
 				</label>
-				<input type="submit" value="Post a message">
+				<input type="submit" value="Post Message">
 			</fieldset>
 		</form>
-	</div>
-	<div class="messageBoard">
-		<p class="userMessage"></p>
 	</div>
 	{% with messages = get_flashed_messages(with_categories=true) %}
 		{% if messages %}
@@ -31,6 +28,37 @@
 			</ul>
 		{% endif %}
 	{% endwith %}
+	<div class="messageBoard">
+		<div class="messages">		
+			{% for message in messages %}
+				<h3 class="userMessage">Posted by: {{ message['first_name'] }} {{ message['last_name'] }} at {{ message['created_at'] }}</h3>
+				<p class="userMessage">{{ message['message'] }}</p>
+				{% if message['user_id'] == message['id'] %}
+					<form class="delmessages" action="/deleteMessage" method="POST">
+                		<input type="hidden" name="delete" value="{{ message['id'] }}">
+               			<input type="hidden" name="message_time" value="{{ message['created_at'] }}">
+                		<input type="submit" value="Delete Message">
+            		</form>
+				{% endif %}
+					{% for comment in comments %}
+						{% if comment['comment_id'] == message['id'] %}
+							<div class="userComment">
+								<h4 class="userComment">Comment by: {{ comment['first_name'] }} {{ comment['last_name'] }} at {{ comment['created_at'] }}</h4>
+								<p class="userComment">{{ comment['comment'] }}</p>
+							</div>
+						{% endif %}
+					{% endfor %}
+				<form class="newComment" action="/makeComment" method="POST">
+        			<label><span class="newComment">Leave Comments</span>
+        			</label>
+					<textarea name="comment" cols="100" rows="5"></textarea>
+					<input type="hidden" name="message_id" value="{{ message['user_id'] }}">
+					<input type="hidden" name="user_id" value="{{ user['id'] }}">
+					<input type="submit" class="submit_post" value="Post Comments">
+				</form>
+			{% endfor %}
+		</div>	
+	</div>
 </body>
 </html>
 
