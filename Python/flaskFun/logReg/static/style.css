@@ -1,0 +1,55 @@
+label {
+	display: block;
+	width: 300px;
+	text-align: right;
+}
+
+fieldset {
+	display: inline;
+}
+
+.errors {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+
+.userinfo {
+	text-transform: uppercase;
+}
+
+.header {
+	display: inline-block;
+	text-align: center;
+	margin: 20px;
+	padding: 20px;
+}
+.welcome {
+	display: inline;
+}
+.logout {
+	display: inline;
+	padding-left: 200px;
+}
+.wallHeader {
+	display: inline-block;
+}
+#wallMessage {
+	display: inline-block;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	margin: 20px;
+	padding: 20px;
+}
+input[type=submit]{
+	width: 90%;
+	text-align: center;
+	margin: 20px;
+	padding: 20px;
+	background: rgba(0,0,121,.9);
+	color: #fff;
+	font-size: 20px;
+	border-radius: 5px;
+}
