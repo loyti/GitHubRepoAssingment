@@ -36,6 +36,14 @@ fieldset {
 .wallHeader {
 	display: inline-block;
 }
+.messagePost{
+	display: inline-block;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	margin: 20px;
+	padding: 20px;
+	text-align: center;
+}
 .messageBoard {
 	display: inline-block;
 	background: rgba(0,0,0,.5);

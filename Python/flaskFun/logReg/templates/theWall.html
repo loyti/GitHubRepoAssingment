@@ -9,7 +9,7 @@
 		<h1 class="welcome">Welcome <span class="userinfo">{{user['first_name']}}</span> to <em>THE WALL</em></h1>
 		<a class="logout" href="/logout">Logout</a>
 	</div>
-	<div class="messages">
+	<div class="messagePost">
 		<form action="/makeMessage" method="POST" id="wallMessage">
 			<fieldset>
 				<label>Post New Message
@@ -41,7 +41,7 @@
             		</form>
 				{% endif %}
 					{% for comment in comments %}
-						{% if comment['user_id'] == message['user_id'] %}
+						{% if comment['user_id'] == user['id'] %}
 							<div class="userComment">
 								<h4 class="userComment">Comment by: {{ comment['first_name'] }} {{ comment['last_name'] }} at {{ comment['created_at'] }}</h4>
 								<p class="userComment">{{ comment['comment'] }}</p>
