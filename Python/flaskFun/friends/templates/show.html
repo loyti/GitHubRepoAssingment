@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friends</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css"> 
+</head>
+<body>
+    <table>
+		<thead>
+			<tr>
+				<td><p>ID</p></td>
+				<td><p>Name</p></td>
+				<td><p>Age</p></td>
+				<td><p>Friend Since</p></td>
+				<td><p>Occupation</p></td>
+				<td><p>View Friend</p></td>
+				<td><p>Edit Details</p></td>
+				<td><p>Delete</p></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><p>{{ one_friend['id'] }}</p></td>
+				<td><p>{{ one_friend['first_name'] }} {{ one_friend['last_name'] }}</p></td>
+				<td><p>{{ one_friend['age'] }}</p></td>
+				<td><p>{{ one_friend['friendSince'] }}</p></td>
+				<td><p>{{ one_friend['occupation'] }}</p></td>
+				<td><p><a href="/friends/{{ one_friend['id'] }}">Details</a></p></td>
+				<td><p><a href="/update_friend/{{ one_friend['id'] }}">Edit</a></p></td>
+				<td><p><a href="/remove_friend/{{ one_friend['id'] }}">Delete</a></p></td>
+			</tr>
+		</tbody>
+ 	</table>
+    {{ one_friend }}
+</body>
+</html>

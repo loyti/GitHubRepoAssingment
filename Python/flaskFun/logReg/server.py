@@ -104,7 +104,7 @@ def theWall():
 		return redirect('/')
 	
 	current_user = mysql.query_db("SELECT * FROM users WHERE id = :id", {"id": session['current_user']})
-	curr_messages = """SELECT users.first_name, users.last_name, DATE_FORMAT(messages.created_at,'%M %D %Y at %H:%i%p') AS created_at, messages.message FROM messages JOIN users ON users.id = messages.user_id ORDER BY messages.created_at DESC"""
+	curr_messages = """SELECT users.first_name, users.last_name, DATE_FORMAT(messages.created_at,'%M %D %Y at %H:%i%p') AS created_at, messages.message, messages.id, messages.user_id FROM messages JOIN users ON users.id = messages.user_id ORDER BY messages.created_at DESC"""
 	current_messages = mysql.query_db(curr_messages)
 	curr_comments = """SELECT users.first_name, users.last_name, DATE_FORMAT(comments.created_at,'%M %D %Y at %H:%i%p') AS created_at, comments.comment, comments.id, comments.user_id FROM comments JOIN users ON users.id = comments.user_id ORDER BY comments.created_at"""
 	current_comments = mysql.query_db(curr_comments)
@@ -144,11 +144,12 @@ def makeComment():
 		return redirect('/theWall')
 	query = """INSERT INTO comments (comment, created_at, updated_at, message_id, user_id) 
 		VALUES (:comment, NOW(), NOW(), :message_id, :user_id)"""
-	#try: 
-	curr_comm = mysql.query_db(query, {"comment": form['comment'], "message_id" :form['message_id'], "user_id": session['current_user']})
-	#	flash('Congrats! Your comment is posted!')
-	#except: 
-	#	flash('OH $#@^! Something is wrong. Please try again')
+	try: 
+	
+		curr_comm = mysql.query_db(query, {"comment": form['comment'], "message_id" :form['message_id'], "user_id": session['current_user']})
+		flash('Congrats! Your comment is posted!')
+	except: 
+		flash('OH $#@^! Something is wrong. Please try again')
 	return redirect('/theWall')
 
 @app.route('/deleteMessage')

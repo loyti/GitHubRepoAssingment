@@ -4,5 +4,16 @@
 	<link rel="stylesheet" type="text/css" href="/static/style.css"> 
 </head>
 <body>
+    <h1>Edit user {{ one_friend['id'] }} {{ one_friend['first_name'] }}</h1>
+    <form action="/updates/{{one_friend['id']}}" method='POST'>
+		<label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{ one_friend['first_name'] }}"></label>
+		<label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{ one_friend['last_name'] }}"></label>
+		<label for="age">Age:<input type="text" name="age" id="age" value="{{ one_friend['age'] }}"></label>
+		<label for="friendSince">Friend Since:<input type="date" name="friendSince" id="friendSince" value="{{ one_friend['friendSince'] }}"></label>
+		<label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{ one_friend['occupation'] }}"></label>
+		<input type="submit" value="Update">
+	</form>
+    <a href="/friends/{{one_friend['id']}}">SHOW</a>
+    <a href="/">Go Back</a>
 </body>
 </html>

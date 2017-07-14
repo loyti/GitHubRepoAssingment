@@ -4,5 +4,41 @@
 	<link rel="stylesheet" type="text/css" href="/static/style.css"> 
 </head>
 <body>
+    <table>
+		<thead>
+			<tr>
+				<td><p>ID</p></td>
+				<td><p>Name</p></td>
+				<td><p>Age</p></td>
+				<td><p>Friend Since</p></td>
+				<td><p>Occupation</p></td>
+				<td><p>View Friend</p></td>
+				<td><p>Edit Details</p></td>
+				<td><p>Delete</p></td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for friend in all_friends: %}
+			<tr>
+				<td><p>{{ friend['id'] }}</p></td>
+				<td><p>{{ friend['first_name'] }} {{ friend['last_name'] }}</p></td>
+				<td><p>{{ friend['age'] }}</p></td>
+				<td><p>{{ friend['friendSince'] }}</p></td>
+				<td><p>{{ friend['occupation'] }}</p></td>
+				<td><p><a href="/friends/{{ friend['id'] }}">Details</a></p></td>
+				<td><p><a href="/update_friend/{{ friend['id'] }}">Edit</a></p></td>
+				<td><p><a href="/remove_friend/{{ friend['id'] }}">Delete</a></p></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+ 	</table>
+    <form action='/addfriend' method='POST'>
+		<label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+		<label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+		<label for="age">Age:<input type="text" name="age" id="age"></label>
+		<label for="friendSince">Friend Since:<input type="date" name="friendSince" id="friendSince"></label>
+		<label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+		<input type="submit" value="JOIN FRIENDS">
+	</form>
 </body>
 </html>

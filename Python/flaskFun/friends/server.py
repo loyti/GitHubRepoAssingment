@@ -12,8 +12,8 @@ def index():
 	friends = mysql.query_db(query)                           # run query with query_db()
 	return render_template('index.html', all_friends=friends) # pass data to our template
 
-
-@app.route('/friends', methods=['POST'])
+#next route adds new user
+@app.route('/addfriend', methods=['POST'])
 def create():
 	if (request.form['first_name'] == "") or (request.form['last_name'] == "") or (request.form['age'] == "") or (request.form['friendSince'] == "") or (request.form['occupation'] == ""):
                 flash("You must complete all fields!")
@@ -32,17 +32,17 @@ def create():
 			'occupation': request.form['occupation']
 		}
 	
-		print request.form['first_name']
-		print request.form['last_name']
-		print request.form['age']
-		print request.form['friendSince']
-		print request.form['occupation']
-
 	# add a friend to the database!
 
-		mysql.query_db(query, data)
-	return redirect('/')
+		friendId = mysql.query_db(query, data)
+	return redirect('/friends/' + str(friendId))
 
+@app.route('/add')
+def add():
+	
+	return render_template('add.html')
+
+#next route shows individual user info
 @app.route('/friends/<friend_id>')
 def show(friend_id):
 	# Write query to select specific user by id. At every point where
@@ -54,11 +54,21 @@ def show(friend_id):
 	friends = mysql.query_db(query, data)
 	# Friends should be a list with a single object,
 	# so we pass the value at [0] to our template under alias one_friend.
-	return render_template('index.html', one_friend=friends[0])
+	return render_template('show.html', one_friend=friends[0])
 
-@app.route('/update_friend/<friend_id>', methods=['POST'])
+@app.route('/update_friend/<friend_id>', methods=['GET'])
 def update(friend_id):
-	query = "UPDATE friends SET first_name = :first_name, last_name = :last_name, age = :age, friendSince = :friendSince, occupation = :occupation WHERE id = :id"
+	query = "SELECT * FROM friends WHERE id = :specific_id"
+	# Then define a dictionary with key that matches :variable_name in query.
+	data = {'specific_id': friend_id}
+	# Run query with inserted data.
+	friends = mysql.query_db(query, data)
+
+	return render_template('edit.html', one_friend=friends[0])
+
+@app.route('/updates/<friend_id>', methods=['POST'])
+def processEdits(friend_id):
+	query = "UPDATE friends SET first_name = :first_name, last_name = :last_name, age = :age, friendSince = :friendSince, occupation = :occupation, updated_at = NOW() WHERE id = :id"
 	data = {
 		'first_name': request.form['first_name'],
 		'last_name':  request.form['last_name'],
@@ -70,7 +80,7 @@ def update(friend_id):
 	mysql.query_db(query, data)
 	return redirect('/')
 
-@app.route('/remove_friend/<friend_id>', methods=['POST'])
+@app.route('/remove_friend/<friend_id>')
 def delete(friend_id):
 	query = "DELETE FROM friends WHERE id = :id"
 	data = {'id': friend_id}
