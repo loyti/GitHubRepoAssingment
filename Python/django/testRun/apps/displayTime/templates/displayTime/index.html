@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+	<title>What time is it?</title>
+	{% load static %}
+	<link rel="stylesheet" type"text/css" href="{% static 'displayTime/style.css'%}">
+</head>
+<body>
+	<div class="wrapper">
+		<h2 class="welcome">The current time and date is:</h2>
+		<h1 class="timeNow">{{ time }}</h1>
+	</div>
+</body>
+</html>
