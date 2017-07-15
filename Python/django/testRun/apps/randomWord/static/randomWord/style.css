@@ -1,0 +1,35 @@
+.wrapper {
+        margin: 20px;
+        padding: 20px;
+        display: inline-block;
+}
+
+.counter {
+        border: 3px solid #000;
+        border-radius: 5px;
+        background: rgba(0,0,0,.5);
+        color: #fff;
+        font-weight: bolder;
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+}
+
+.randWord {
+        border: 3px solid #000;
+        border-radius: 5px;
+        background: rgba(0,0,0,.5);
+        color: #fff;
+        font-weight: bolder;
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+}
+
+input[type=submit] {
+	margin: 20px;
+	padding: 20px;
+	background: rgba(0,0,255,.75);
+	color: #fff;
+        font-weight: bolder;
+        text-align: center;

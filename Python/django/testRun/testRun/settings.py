@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'apps.surveys',
     'apps.users',
     'apps.displayTime',
+    'apps.randomWord',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

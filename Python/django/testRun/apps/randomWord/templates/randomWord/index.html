@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Random Word Generator</title>
+        {% load static %}
+        <link rel="stylesheet" type"text/css" href="{% static 'randomWord/style.css'%}">
+</head>
+<body>
+        <div class="wrapper">
+		<h2 class="counter">Random Word (Attempt {{ request.session.sessionCount }})</h2>
+		<h1 class="randWord">{{ randomWord }}</h1>
+		<form action='addSession' method="POST">
+			{% csrf_token %}
+			<input type="submit" value="NEW RANDOM WORD">
+		</form>
+		<form action='clearSession' method="POST">
+			{% csrf_token %}
+			<input type="submit" value="Clear Sessions">
+		</form>
+	</div>
+</body>
+</html>

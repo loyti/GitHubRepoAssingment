@@ -23,6 +23,7 @@ urlpatterns = [
 	url(r'^surveys/', include('apps.surveys.urls')),
 	url(r'^users/', include('apps.users.urls')),
 	url(r'^displayTime/', include('apps.displayTime.urls')),
+	url(r'^randomWord/', include('apps.randomWord.urls')),
 	url(r'^admin/', admin.site.urls),
     
 ]
