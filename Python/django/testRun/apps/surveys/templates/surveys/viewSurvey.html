@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" type"text/css" href="{% static 'surveys/style.css' %}">
+</head>
+<body>
+        <div>
+                {% if messages %}
+    			{% for message in messages %}
+    			<h2>{{ message }} You have posted {{ sessionCounter }}</h2>
+    			{% endfor %}
+		{% endif %}
+		<h1 class="title">Welcome to the Survey Section</h1>
+		<p>{{ first_name }}</p>
+		<p>{{ last_name }}</p>
+		<p>{{ email }}</p>
+		<p>{{ location }}</p>
+		<p>{{ favLang }}</p>
+		<p>{{ comments }}</p>
+	</div>
+</body>
+</html>

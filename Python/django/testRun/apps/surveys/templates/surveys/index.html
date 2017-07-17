@@ -8,27 +8,36 @@
 <body>
 	<div>
 		<h1 class="title">Welcome to the Survey Section</h1>
-		<form action="/newSurvey" method="POST">
+		{% if messages %}
+			<ul class="messages">
+    			{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		<form action="/surveys/postSurvey" method="POST">
 			{% csrf_token %}
 			<label>First Name:</label>
 				<input type="text" name="first_name" placeholder="First Name">	
-			<label>Last Name:</label
+			<label>Last Name:</label>
 				<input type="text" name="last_name" placeholder="Last Name">
+			<label>Email:</label>
+                                <input type="text" name="email" placeholder="Email">
 			<label>Location</label>
 				<select name="location">
-                                        <option value="Los Angeles"></option>
-                                        <option value="Seattle"></option>
-                                        <option value="Silicon Valley"></option>
-                                        <option value="Dallas"></option>
-                                        <option value=""></option>
+                                        <option value="los_angeles">Los Angeles</option>
+                                        <option value="seattle">Seattle</option>
+                                        <option value="silicon_valley">Silicon Valley</option>
+                                        <option value="dallas">Dallas</option>
+                                        <option value="washington_dc">Washington,D.C.</option>
                                 </select>
 			<label>Favorite Language</label>
 				<select name="favLang">
-					<option value=""></option>
-					<option value=""></option>
-					<option value=""></option>
-					<option value=""></option>
-					<option value=""></option>
+					<option value="ios">iOS</option>
+					<option value="python">Python</option>
+					<option value="c">C</option>
+					<option value="javascript">JavaScript</option>
+					<option value="java">Java</option>
 				</select>
 			<label>Comments</label>
 				<textarea name="comments" placeholder="Let us know your comments"></textarea>
