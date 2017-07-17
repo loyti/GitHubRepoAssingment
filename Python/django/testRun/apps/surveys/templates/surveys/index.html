@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" type"text/css" href="{% static 'surveys/style.css'%}">
+</head>
+<body>
+	<div>
+		<h1 class="title">Welcome to the Survey Section</h1>
+		<form action="/newSurvey" method="POST">
+			{% csrf_token %}
+			<label>First Name:</label>
+				<input type="text" name="first_name" placeholder="First Name">	
+			<label>Last Name:</label
+				<input type="text" name="last_name" placeholder="Last Name">
+			<label>Location</label>
+				<select name="location">
+                                        <option value="Los Angeles"></option>
+                                        <option value="Seattle"></option>
+                                        <option value="Silicon Valley"></option>
+                                        <option value="Dallas"></option>
+                                        <option value=""></option>
+                                </select>
+			<label>Favorite Language</label>
+				<select name="favLang">
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+				</select>
+			<label>Comments</label>
+				<textarea name="comments" placeholder="Let us know your comments"></textarea>
+			<input type="submit" value="Send Survey">
+		</form>
+
+	</div>
+</body>
+</html>

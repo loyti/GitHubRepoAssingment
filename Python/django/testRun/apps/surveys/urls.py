@@ -1,6 +1,7 @@
 from django.conf.urls import url
-from . import views           # This line is new!
+from . import views
 urlpatterns = [
-        url(r'^$', views.index),     # This line has changed!
-	url(r'^new$', views.new)
+        url(r'^$', views.index),
+	url(r'^postSurvey$', views.postSurvey),
+	url(r'^surveyView$', views.surveyView),
 ]
