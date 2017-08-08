@@ -1,0 +1,51 @@
+Angular
+
+What?
+- a frontend framework
+
+Why?
+- advancement financed by google
+- Single page applications
+- AJAX
+
+Event Listeners still exists
+
+Services
+HttpModule
+w/Promises - objects that hold callbacks-  or observables
+
+
+Component-based
+  <app-list></app-list> replace me w/component named 'list'
+  contains:
+    html - looks,
+    css - styling,
+    typescript - logic
+
+  index.hmtl
+  - app.module
+    - app.component
+      - .html
+        <app-list></app-list>
+  - module
+
+  webpack packing files into one
+
+Angular CLI
+
+ng new 'appName'
+- creates new directory
+- app.module
+ng g component 'list'
+- imports 'list'
+- adds it to module
+
+.ts file
+- selector templating
+
+ng serve
+- watches and servers data from localhost:4200\
+
+// ng build
+// - gives the entire index.html file
+// - builds dist repo

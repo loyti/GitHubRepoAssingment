@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>JavaScript Advanced</title>
+  <script>
+  $(document).ready(
+    function(){
+      $('.greatButton').click(function(){
+        // as soon as the AJAX request returns, displayName is invoked and passed data!
+        //https://api.jquery.com/jquery.get/
+        $.get('https://api.github.com/users/loyti', displayName);
+      });
+    function displayName(data){
+      var name = data.name;
+        if (name){
+          $('.newStuff').append("<p class='newContent'>"+name+"</p>");
+        }
+      }
+      $('.badButton').click(function(){
+        // as soon as AJAX request returns, remove recently displayed content
+        $.get('https://api.github.com/users/loyti', removeName);
+      });
+    function removeName(data){
+      if (name == data.name){
+        $('.newContent')[$('.newContent').length-1].remove();
+      }
+    }
+  });
+
+
+  </script>
+</head>
+<body>
+  <button class="greatButton">Add Content</button>
+  <button class="badButton">Remove Content</button>
+  <div class="newStuff"></div>
+</body>
+</html>

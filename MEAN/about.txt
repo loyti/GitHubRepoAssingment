@@ -1,0 +1,8 @@
+great things to have available
+
+error codes =>
+if ((responseCode >= 400) && (responseCode <=499)){
+  console.log('client error')
+} else if ((responseCode >= 500) && (responseCode <= 599)){
+  console.log('server error')
+}

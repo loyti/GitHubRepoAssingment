@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>JavaScript Advanced</title>
+  <script>
+  function onclick() {
+    alert("The button was clicked");
+  }
+  var $Dojo = (id) => {
+    object = document.getElementById(id);
+    object.click = (callback) => {
+      this.addEventListener("click", callback);
+    }
+    object.hover = (mouseover, mouseout) => {
+      this.addEventListener("mouseover", callback);
+      this.addEventListener("mouseout", callback);
+    }
+    return object;
+  }
+  //
+  //   this.myId = document.getElementById(id);
+  //   this.click = function (callback) {
+  //       this.myId.addEventListener("click", callback);
+  //   };
+  //
+  //   this.hover = function (hoverin, hoverout) {
+  //       this.myId.addEventListener("mouseover", hoverin);
+  //       this.myId.addEventListener("mouseout", hoverout);
+  //   };
+  //
+  //   return this;
+  // }
+  </script>
+</head>
+<body>
+  <button>Click Me</button>
+
+</body>
+</html>

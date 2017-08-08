@@ -1,0 +1,20 @@
+This is about running a mongo DataBase system with JavaScript.
+
+Mongo DB
+What?
+- Database Software
+- noSQL database
+-- 'no joins out of the box'
+Why?
+-document-based storage
+-E2E javascript (written to look like JS)
+How?
+require database
+
+
+Workflow
+1. start mongod (server)
+2. [new terminal window] npm install mongoose and require
+3. mongoose.connect
+4. create Schema
+5. register Schema into model variables

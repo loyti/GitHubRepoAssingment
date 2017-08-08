@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>JavaScript Advanced</title>
+  <script>
+  function ninjaBelt(ninja){
+    return function belt(beltColor){ //note the closure here!
+      console.log("Ninja "+ ninja + " has earned a " + beltColor +" belt.");
+    }
+  }
+  ninjaBelt('Eileen')('black'); //note the double invocation here.
+  </script>
+</head>
+<body>
+  <button>Click Me</button>
+</body>
+</html>

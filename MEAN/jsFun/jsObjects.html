@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Objects</title>
+</head>
+<body>
+
+  <div id="target"></div>
+  <div id="target2"></div>
+  <script>
+
+  let students = [
+    {name: 'Remy', cohort: 'Jan'},
+    {name: 'Genevieve', cohort: 'March'},
+    {name: 'Chuck', cohort: 'Jan'},
+    {name: 'Osmund', cohort: 'June'},
+    {name: 'Nikki', cohort: 'June'},
+    {name: 'Boris', cohort: 'June'}
+  ];
+
+
+  let users = {
+    employees: [
+        {'first_name':  'Miguel', 'last_name' : 'Jones'},
+        {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+        {'first_name' : 'Nora', 'last_name' : 'Lu'},
+        {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+    ],
+    managers: [
+       {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+       {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+    ]
+  };
+
+  let target_id = "target";
+
+  function aSC (){
+    for (let studs in students){
+      console.log(studs);
+      console.log(`name: ${students[studs].name}, cohort: ${students[studs].cohort}`)
+    }
+  }
+
+  aSC(students, target_id);
+
+  let target_id2 = "target2"
+
+  function aEM (users, target_id2){
+    for (let key in users){
+      console.log(key.toUpperCase());
+      for (let i = 0; i < users[key].length; i++){
+        let num = i + 1;
+        let fname = users[key][i].first_name;
+        let lname = users[key][i].last_name;
+        let length = fname.length + lname.length;
+        console.log('${num} - ${lname}, ${fname} - ${length}');
+      }
+    }
+  };
+  aEM();
+
+  </script>
+
+</body>
+<html>
