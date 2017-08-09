@@ -9,7 +9,6 @@ yourcommandline> npm install mongoose --save
 
 Ensure that the data.db folder is accessible from root
 
-
 How to Modularize
 
 server.js

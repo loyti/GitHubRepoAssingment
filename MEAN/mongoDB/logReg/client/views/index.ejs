@@ -1,0 +1,29 @@
+<html>
+<head>
+ <title>LogIn & Registration</title>
+</head>
+<body>
+  <h1>Welcome to Login & Registration</h1>
+  <form class='form' action='/login' method='post'>
+    <label>Email: </label>
+    <input class='form-control' type='text' name='email'>
+    <label>Password: </label>
+    <input class='form-control' type='text' name='password'>
+    <input type="submit" value="Submit">
+  </form>
+  <form class='form' action='/register' method='post'>
+    <label>First Name: </label>
+    <input class='form-control' type='text' name='firstName'>
+    <label>Last Name: </label>
+    <input class='form-control' type='text' name='lastName'>
+    <label>Password: </label>
+    <input class='form-control' type='text' name='password'>
+    <label>Password Confirmation: </label>
+    <input class='form-control' type='text' name='passwordConfirmation'>
+    <label>Birthday: </label>
+    <input class='form-control' type='date' name='birthday'>
+    <input type="submit" value="Register">
+  </form>
+  <a href="/" role="button">Home Page</a>
+</body>
+</html>

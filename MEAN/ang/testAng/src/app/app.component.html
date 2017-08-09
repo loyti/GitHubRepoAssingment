@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{title}}!</h1>
+  <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
+  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko.jpg?raw=true">
+  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko2.jpg?raw=true">
+</div>
+<div>
+  <h2>The first number is: {{x}}</h2>
+  <h2>The second number is: {{y}}</h2>
+  <p *ngIf='myBoolean'>Add them together and get {{x + y}}</p>
+  <p *ngIf='!myBoolean'>Subtract them together and get {{x - y}}</p>
+  <p *ngIf='myBoolean'>Multiple them together and get {{x * y}}</p>
+  <p *ngIf='!myBoolean'>Divide them together and get {{x / y}}</p>
+</div>
+<div> 
+</div>
