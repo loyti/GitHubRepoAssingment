@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{title}}!</h1>
+  <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
+  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko.jpg?raw=true">
+  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko2.jpg?raw=true">
+</div>
+<div>
+  <h2 style="text-align: center">{{today | date:'medium'}}</h2>
+  <div>
+    <button (click)="whatPac()">Pacific Time</button>
+    <p>{{pacTime | date:'medium'}}</p>
+  </div>
+  <div>
+    <button (click)="whatMount()">Mountain Time</button>
+    <p>{{mountTime | date:'medium'}}</p>
+  </div>
+  <div>
+    <button (click)="whatCent()">Central Time</button>
+    <p>{{centTime | date:'medium'}}</p>
+  </div>
+  <div>
+    <button (click)="whatEast()">Eastern Time</button>
+    <p>{{eastTime | date:'medium'}}</p>
+  </div>
+  <div>
+    <button (click)="whatTime()">My Time</button>
+  </div> 
+</div>

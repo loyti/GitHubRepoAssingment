@@ -48,3 +48,70 @@ ng serve
 // ng build
 // - gives the entire index.html file
 // - builds dist repo
+
+
+Task Example with Input & Output
+decorators @Input & @Output
+
+Task
+-Task-New
+
+-Task-List
+
+Parent
+-passes child information
+-@Input()
+Child
+-forms and events transmitted to parent
+-@Output()
+
+How to
+
+ng component 'component-name'
+
+ng class 'component-name'
+
+ng component 'component-name'/'component-child'
+-replace html content with "<app-'component-name'></app-'component-name'>
+
+Class development
+Main Task Component
+export class Task {
+  name: String = "";
+  created_at: Date = New Date();
+  description: String = "";
+
+  constructor(aName, aDesc){
+    this.name = aName;
+    this.description = aDesc
+    this.created_at = new Date();
+    }
+}
+
+Task-List Component
+import {Component, OnInit, Input}
+import {Task from '../../Task'}
+@Input() myTasks: Task[];
+addTask(aTask){
+  this.newTask = new Task ("","");
+  this.addTaskEvent.emit(aTask);
+}
+
+Task-New Component
+
+dataFromChild(eventData){
+  this.tasks.push(eventData);
+};
+
+Component html
+<app-task-new (addTaskEvent)='dataFromChild($event)'></app-task-new>
+<app-task-list [myTasks]="tasks"></app-task-list>
+
+<ul>
+  <li *ngFor>
+  </li>
+</ul>
+
+
+write code for the parent and child at the same Time
+Import Output EventEmitter
