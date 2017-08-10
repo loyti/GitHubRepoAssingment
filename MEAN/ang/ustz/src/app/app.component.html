@@ -6,24 +6,13 @@
   <img width='300vm' src="https://github.com/loyti/images/blob/master/niko2.jpg?raw=true">
 </div>
 <div>
-  <h2 style="text-align: center">{{today | date:'medium'}}</h2>
-  <div>
-    <button (click)="whatPac()">Pacific Time</button>
-    <p>{{pacTime | date:'medium'}}</p>
-  </div>
-  <div>
-    <button (click)="whatMount()">Mountain Time</button>
-    <p>{{mountTime | date:'medium'}}</p>
-  </div>
-  <div>
-    <button (click)="whatCent()">Central Time</button>
-    <p>{{centTime | date:'medium'}}</p>
-  </div>
-  <div>
-    <button (click)="whatEast()">Eastern Time</button>
-    <p>{{eastTime | date:'medium'}}</p>
-  </div>
-  <div>
-    <button (click)="whatTime()">My Time</button>
-  </div> 
+  <section>
+  <button (click)="getDateByZone('PST')" [ngClass]="{selected: lastTimeZoneSelected === 'PST'}">PST</button>
+  <button (click)="getDateByZone('MST')" [ngClass]="{selected: lastTimeZoneSelected === 'MST'}">MST</button>
+  <button (click)="getDateByZone('CST')" [ngClass]="{selected: lastTimeZoneSelected === 'CST'}">CST</button>
+  <button (click)="getDateByZone('EST')" [ngClass]="{selected: lastTimeZoneSelected === 'EST'}">EST</button>
+</section>
+<section>
+  <h1>{{time | date:'medium'}}</h1>
+</section>
 </div>
