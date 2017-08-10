@@ -1,0 +1,14 @@
+#startBody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  vertical-align: top;
+}
+#theBody {
+  flex-direction: column;
+  column-count: 2;
+  max-width: 350px;
+  align-items: flex-start;
+  vertical-align: top;
+}
