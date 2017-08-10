@@ -7,7 +7,8 @@
 </div>
 
 <div>
-  <div *ngFor="let myColor of myColors">
-    <p [ngStyle]="{'background-color':myColor, 'margin': '20px', 'padding': '20px'}"></p>
+  <button (click)="randomizeColors()">Randomize</button>
+  <div *ngFor="let color of colors">
+    <p [ngStyle]="{'background-color':color, 'margin': '20px', 'padding': '20px'}"></p>
   </div>
 </div>

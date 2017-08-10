@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
 @Component({
@@ -6,19 +6,25 @@ import { NgStyle } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Retro Barcode Generator';
   todayDate = new Date();
   todayTime = new Date();
   colors = ["#000","#111","#222","#333","#444","#555","#666","#777","#888","#999"];
-  myColors = [];
   randNum;
-  constructor(){
-    // var myColor = this.colors[this.colors.length-1];
+  // constructor(){
+  //
+  // };
+  randomizeColors(){
     for(let i = 0; i < this.colors.length; i++){
-      this.randNum = Math.floor(Math.random()*10);
-      this.myColors.push(this.colors[this.randNum]);
+      this.randNum = Math.floor(Math.random()*(this.colors.length-i))+i;
+      let temp = this.colors[this.randNum];
+      this.colors[this.randNum] = this.colors[i];
+      this.colors[i] = temp;
     }
+  };
+  ngOnInit(){
+    this.randomizeColors();
   }
 };
 
