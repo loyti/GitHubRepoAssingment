@@ -1,0 +1,102 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{title}}!</h1>
+  <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
+</div>
+<div>
+  <form>
+    <label>First Name: </label>
+    <input
+      type="text"
+      name="firstName"
+      [(ngModel)]="user.firstName"
+      #firstName="ngModel"
+      required
+    />
+    <label>Last Name: </label>
+    <input
+      type="text"
+      name="lastName"
+      [(ngModel)]="user.lastName"
+      #lastName="ngModel"
+      required
+    />
+    <label>Email: </label>
+    <input
+      type="text"
+      name="email"
+      required
+      minlength="4"
+      maxlength="24"
+      [(ngModel)]="user.email"
+      #email="ngModel"
+    />
+    {{email.errors | json}}
+    {{email.valid | json}}
+    <label>Password: </label>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      required
+    />
+    <label>Password Confirmation: </label>
+    <input
+      type="password"
+      name="passConf"
+      [(ngModel)]="user.passConf"
+      #passConf="ngModel"
+      required
+    />
+    <label>Street Address: </label>
+    <input
+      type="text"
+      name="adStreet"
+      [(ngModel)]="user.adStreet"
+      #adStreet="ngModel"
+      required
+    />
+    <label>Unit / Apt: </label>
+    <input
+      type="text"
+      name="unitApt"
+      [(ngModel)]="user.unitApt"
+      #unitApt="ngModel"
+    />
+    <label>City: </label>
+    <input
+      type="text"
+      name="adCity"
+      [(ngModel)]="user.adCity"
+      #adCity="ngModel"
+      required
+    />
+    <label>State: </label>
+    <input
+      type="text"
+      name="adState"
+      [(ngModel)]="user.adState"
+      #adState="ngModel"
+      required
+    />
+    <label>Feeling Lucky: </label>
+    <input
+      type="radio"
+      name="lucky"
+      value="no"
+      [(ngModel)]="user.lucky"
+      #lucky="ngModel"
+      required
+    />
+    <input
+      type="radio"
+      name="lucky"
+      value="yes"
+      [(ngModel)]="user.lucky"
+      #lucky="ngModel"
+      required
+    />
+    <input type="submit" value="Register">
+  </form>
+</div>

@@ -1,0 +1,18 @@
+.ng-invalid {
+
+}
+.ng-valid[required], .ng-valid.required  {
+  border: 5px solid rgba(0,255,0,.8); /* green */
+}
+.ng-invalid:not(form)  {
+  border: 5px solid rgba(255,0,0,.8); /* red */
+}
+.ng-untouched { }
+.ng-touched { }
+.ng-dirty { }
+.ng-pristine { }
+
+input{
+  display: flex;
+  flex-direction: column;
+}
