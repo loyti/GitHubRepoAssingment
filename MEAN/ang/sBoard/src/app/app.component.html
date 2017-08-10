@@ -2,32 +2,13 @@
 <div style="text-align:center">
   <h1>Welcome to {{title}}!</h1>
   <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
-  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko.jpg?raw=true">
-  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko2.jpg?raw=true">
 </div>
 <div>
-  <div>
-  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
-    show = {{show}}
+  <div *ngFor="let div of arrBoard; index as i;">
+  <button (click)="myColor(i)">{{div}}</button>
+    {{div}}
     <br>
-    <div *ngIf="!show" style="background-color: {{this.color}}">OFF</div>
-    <div *ngIf="show" style="background-color: {{this.color}}">ON</div>
-  </div>
-</div>
-<div>
-  <div>
-  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
-    show = {{show}}
-    <br>
-    <div *ngIf="!show" style="background-color: {{this.color}}">OFF</div>
-    <div *ngIf="show" style="background-color: {{this.color}}">ON</div>
-  </div>
-</div><div>
-  <div>
-  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
-    show = {{show}}
-    <br>
-    <div *ngIf="!show" style="background-color: {{this.color}}">OFF</div>
-    <div *ngIf="show" style="background-color: {{this.color}}">ON</div>
+    <div *ngIf="!div" [ngStyle]="{'background-color': color[0], 'margin': '20px', 'padding': '20px'}">ON</div>
+    <div *ngIf="div" [ngStyle]="{'background-color': color[1], 'margin': '20px', 'padding': '20px'}">OFF</div>
   </div>
 </div>
