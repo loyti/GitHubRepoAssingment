@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{title}}!</h1>
+  <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
+  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko.jpg?raw=true">
+  <img width='300vm' src="https://github.com/loyti/images/blob/master/niko2.jpg?raw=true">
+</div>
+<div>
+  <div>
+  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
+    show = {{show}}
+    <br>
+    <div *ngIf="!show" style="background-color: {{this.color}}">OFF</div>
+    <div *ngIf="show" style="background-color: {{this.color}}">ON</div>
+  </div>
+</div>
+<div>
+  <div>
+  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
+    show = {{show}}
+    <br>
+    <div *ngIf="!show" style="background-color: {{this.color}}">OFF</div>
+    <div *ngIf="show" style="background-color: {{this.color}}">ON</div>
+  </div>
+</div><div>
+  <div>
+  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
+    show = {{show}}
+    <br>
+    <div *ngIf="!show" style="background-color: {{this.color}}">OFF</div>
+    <div *ngIf="show" style="background-color: {{this.color}}">ON</div>
+  </div>
+</div>
