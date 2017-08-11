@@ -17,4 +17,8 @@ export class QuotesComponent implements OnInit {
   	console.log(eventData);
   	this.quotes.push(eventData);
   }
+  deleteQuote(quote) {
+    const idx = this.quotes.indexOf(quote);
+    this.quotes.splice(idx, 1);
+  }
 }

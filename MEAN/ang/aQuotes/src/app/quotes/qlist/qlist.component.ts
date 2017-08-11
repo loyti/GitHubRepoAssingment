@@ -12,5 +12,16 @@ export class QlistComponent implements OnInit {
 
   ngOnInit() {
   }
+  voteUp(quote) {
+    quote.rating++;
+  }
+
+  voteDown(quote) {
+    quote.rating--;
+  }
+
+  delete(quote) {
+    this.deleteQuoteEvent.emit(quote);
+  }
 
 }

@@ -5,4 +5,9 @@
     <p><em>{{quote.qDescription}}</em></p>
     <p>{{quote.created_at | date:"shortDate"}}</p>
   </div>
+  <div>
+    <button class='up' (click)="voteUp(quote)">Vote Up</button>
+    <button class='down' (click)="voteDown(quote)">Vote Down</button>
+    <button class='delete' (click)="delete(quote)">Delete</button>
+  </div>
 </div>
