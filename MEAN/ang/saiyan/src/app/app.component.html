@@ -1,0 +1,34 @@
+<div style="text-align:center">
+  <h1>Welcome to {{title}}!</h1>
+  <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
+</div>
+<div>
+  <h2>Initial Power Level: </h2>
+  <h1><em></em></h1>
+  <form (submit)="submit()">
+    <select [(ngModel)]="myPower" name="level" #level="ngModel" >
+      <option *ngFor="let level of levels" >{{level}}</option>
+      <!-- <option [ngValue]=10>10</option>
+      <option [ngValue]=90>90</option>
+      <option [ngValue]=150>150</option>
+      <option [ngValue]=250>250</option>
+      <option [ngValue]=500>500</option> -->
+    </select>
+
+    <input type="submit" value="Change Power Level">
+  </form>
+  <div id=powerView>
+    <div id="powerLevel">
+      <div class="power"><app-human [humanPower]="myPower"></app-human></div>
+      <div class="power"><app-c-s [sPower]="myPower"></app-c-s></div>
+      <div class="power"><app-c-ss [ssPower]="myPower"></app-c-ss></div>
+    </div>
+  </div>
+  <div id="powerView">
+    <div id="powerLevel">
+      <div class="power"><app-c-ss2 [s2Power]="myPower"></app-c-ss2></div>
+      <div class="power"><app-c-ss3 [s3Power]="myPower"></app-c-ss3></div>
+      <div class="power"><app-c-ss4 [s4Power]="myPower"></app-c-ss4></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+#powerView {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  vertical-align: top;
+}
+#powerLevel {
+  flex-direction: column;
+  column-count: 3;
+  min-width: 200px;
+  justify-content: center;
+  align-items: stretch;
+}
+.power{
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid rgba(0,0,0,.25);
+  border-radius: 5px;
+}
