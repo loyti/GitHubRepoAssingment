@@ -6,3 +6,42 @@ if ((responseCode >= 400) && (responseCode <=499)){
 } else if ((responseCode >= 500) && (responseCode <= 599)){
   console.log('server error')
 }
+
+
+Services & Routes
+
+Good Projects
+Routing Product Project
+Weather ForeCast
+
+
+
+Services
+-do not store var's here
+-
+
+
+Client
+  -Component - store var's here
+    - send function calls thru http service
+    - recieve promise from service
+    -this._httpService.getUsers()
+    -.then((res)=>{})
+    -.catch((err)=>{'there was an error'})
+    -user.find({}).exec(function(err,users){})
+--http - uses HttpModule to (req,res)
+
+Dependency Injection
+- the ability to talk to a remote server
+- use the following inside component
+-> import { HttpService } from '../http.service'
+-> constructor(private _httpService: HttpService){}
+-> onClick(){console.log('what happens')}
+-> .then((response){})
+-> .catch
+
+
+- use the following inside HttpService
+-> import 'rxjs' for .map function used below
+-> constructor(private _http: Http){}
+-> return Mewtwo(){this.http.get('address').map(Response=>Response.json()).toPromise();}

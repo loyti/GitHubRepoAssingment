@@ -1,3 +1,7 @@
-<p>
-  quotes works!
-</p>
+<div style="text-align: center; margin: 20px; padding: 20px;">
+  <h2><em>Welcome to the Life of Nikolai</em></h2>
+</div>
+<div>
+  <app-qnew (addQuoteEvent)="dataFromChild($event)"></app-qnew>
+  <app-qlist [myQuotes]="quotes"></app-qlist>
+</div>

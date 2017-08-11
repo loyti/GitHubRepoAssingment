@@ -1,3 +1,16 @@
-<p>
-  qnew works!
-</p>
+<div>
+  <h3>Add a Quote for Niko</h3>
+  <form (submit)="addQuote(newQuote)">
+	Name:
+	<input type="text" name="qTitle"
+	[(ngModel)] = "newQuote.qTitle"
+	#qTitle = "ngModel"
+	>
+	Description:
+	<input type="text" name="qDescription"
+	[(ngModel)] = "newQuote.qDescription"
+	#qDescription = "ngModel"
+	>
+	<input type="submit" name="">
+</form>
+</div>

@@ -4,11 +4,11 @@
   <p>Today's date is {{todayDate | date:'longDate'}} and the time is {{todayTime | date:'shortTime'}}</p>
 </div>
 <div>
-  <div *ngFor="let div of arrBoard; index as i;">
+  <div *ngFor="let bBox of arrBoard; index as i;">
   <button (click)="myColor(i)">{{div}}</button>
     {{div}}
     <br>
-    <div *ngIf="!div" [ngStyle]="{'background-color': color[0], 'margin': '20px', 'padding': '20px'}">ON</div>
-    <div *ngIf="div" [ngStyle]="{'background-color': color[1], 'margin': '20px', 'padding': '20px'}">OFF</div>
+    <div *ngIf="!bBox" [ngStyle]="{'background-color': color[0], 'margin': '20px', 'padding': '20px'}">ON</div>
+    <div *ngIf="bBox" [ngStyle]="{'background-color': color[1], 'margin': '20px', 'padding': '20px'}">OFF</div>
   </div>
 </div>
