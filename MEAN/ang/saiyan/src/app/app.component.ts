@@ -10,7 +10,7 @@ export class AppComponent {
   todayDate = new Date();
   todayTime = new Date();
   myPower: Number;
-  levels: Number[] =[1,10,90,150,250,500]
+  levels: Number[] =[1,10,90,150,250,500];
   constructor(){
     this.myPower = 1;
   }
