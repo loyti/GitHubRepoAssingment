@@ -20,7 +20,7 @@ Services
 Client
   -Component - store var's here
     - send function calls thru http service
-    - recieve promise from service
+    - receive promise from service
     -this._httpService.getUsers()
     -.then((res)=>{})
     -.catch((err)=>{'there was an error'})
