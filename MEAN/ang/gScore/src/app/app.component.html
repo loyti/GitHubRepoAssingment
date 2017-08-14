@@ -11,7 +11,7 @@
   </section>
   <section class="display">
     <div *ngIf="userExists === true">
-      <h1>{{score}}</h1>
+      <h1>{{ username }}'s {{score}}</h1>
       <h5 class='red' *ngIf="score < 20">Needs Work!</h5>
       <h5 class='orange' *ngIf="score >= 20 && score < 50">A decent start!</h5>
       <h5 *ngIf="score >= 50 && score < 100">Doing good!</h5>

@@ -21,6 +21,7 @@ export class AppComponent {
         if (user.id) {
           this.userExists = true;
           this.score = user.public_repos + user.followers;
+
         } else {
           this.userExists = false;
           this.score = null;
@@ -35,5 +36,4 @@ export class AppComponent {
       this.userExists = false;
     }
   }
-
 }
