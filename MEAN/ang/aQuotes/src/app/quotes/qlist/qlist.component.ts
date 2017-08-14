@@ -20,8 +20,8 @@ export class QlistComponent implements OnInit {
     quote.rating--;
   }
 
-  delete(quote) {
-    this.deleteQuoteEvent.emit(quote);
+  deleteQuote(quote) {
+    quote.emit(quote);
   }
 
 }

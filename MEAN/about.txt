@@ -14,12 +14,8 @@ Good Projects
 Routing Product Project
 Weather ForeCast
 
-
-
 Services
 -do not store var's here
--
-
 
 Client
   -Component - store var's here
@@ -40,8 +36,14 @@ Dependency Injection
 -> .then((response){})
 -> .catch
 
-
 - use the following inside HttpService
 -> import 'rxjs' for .map function used below
 -> constructor(private _http: Http){}
 -> return Mewtwo(){this.http.get('address').map(Response=>Response.json()).toPromise();}
+
+
+Routing and Full MEAN
+add '--routing' to all ng new 'projectName' --routing
+
+Routes [{}]
+array of objects that are assigned to components
