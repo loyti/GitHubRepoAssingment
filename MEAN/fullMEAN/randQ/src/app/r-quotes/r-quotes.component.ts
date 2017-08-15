@@ -9,6 +9,7 @@ import { HttpService } from './../http.service';
 export class RQuotesComponent implements OnInit {
   newQuote: object = {qname: '', quote:''};
   quotes: object;
+  errors: object[];
   constructor(private _httpService: HttpService) { }
 
   getAllQuotes(){
@@ -17,7 +18,6 @@ export class RQuotesComponent implements OnInit {
       console.log('then');
       console.log(response);
       this.quotes = response;
-      this.newQuote = {qname: '', quote:''};
     })
     .catch((error)=>{
       console.log('catch');
@@ -30,12 +30,21 @@ export class RQuotesComponent implements OnInit {
   addQuote(quoteToAdd){
     console.log(quoteToAdd);
     console.log('addQuote in BTQComponent');
+    this.errors = [];
     this._httpService.createQuote(quoteToAdd)
     .then((response)=>{
       console.log('then');
       console.log(response);
-      this.newQuote = {qname: '', quote:''};
-      this.getAllQuotes();
+      if(response.errors){
+  			console.log("got validation errors");
+  			console.log(response.errors);
+  			for(var key in response.errors){
+  				this.errors.push(response.errors[key]);
+  			}
+  		}else{
+	  		this.newQuote = {name: "", quote: ""};
+	  		this.getAllQuotes();
+  		}
     })
     .catch((error)=>{
       console.log('catch');

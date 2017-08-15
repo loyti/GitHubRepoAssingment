@@ -1,4 +1,7 @@
 <h3>Create a new Quote</h3>
+
+<p *ngFor="let error of errors">{{error.message}}</p>
+
   <form (submit)='addQuote(newQuote)'>
     <p>Name: <input
       type='text'
@@ -16,7 +19,8 @@
     </p>
     <input type='submit' name=''>
   </form>
+
 <h4>Here is a list of all the quotes by Niko</h4>
 <ul>
-  <li *ngFor="let quote of quotes">{{quote.quote}}, by {{quote.qname}} - {{quote.createdAt}}</li>
+  <li *ngFor="let quote of quotes">{{quote.quote}}, by {{quote.qname}} - {{quote.createdAt | date:'medium'}}</li>
 </ul>
