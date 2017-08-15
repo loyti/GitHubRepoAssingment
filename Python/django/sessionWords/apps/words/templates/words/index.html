@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Session Words Generator</title>
+        {% load static %}
+        <link rel="stylesheet" type"text/css" href="{% static 'words/style.css'%}">
+</head>
+<body>
+        <div class="wrapper">
+                <div class="leftBody">
+			<ul>
+			{% for message in messages %}
+				<li class="errors">{{ message }}</li>
+			{% endfor %}
+			</ul>
+                        <h1>Add a new word</h1>
+                        <form action='/process' method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="words" placeholder="Write your word(s)">
+				
+                                <input type="radio" name="color" value="red">Red
+				<input type="radio" name="color" value="green">Green
+                                <input type="radio" name="color" value="blue">Blue
+				
+                                <input type="checkbox" name="bigFont" value="bigFont">Show BIG fonts!
+				<input id="newWord" class="newWord" type="submit" value="Add to Session">
+                        </form>
+                </div>
+                <div class="rightBody">
+                        <form action='/clearSession' method="POST">
+                        	{% csrf_token %}
+                        	<input id="clearAll" class="clearAll" type="submit" value="Clear Session">
+                	</form>
+			<div class="allWords">
+				{% for msg in request.session.messages %}
+					<p class="{{ msg.1 }}">{{ msg.0 }} at {{ msg.2 }}</p>
+				{% endfor %}
+			</div>
+		</div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>AJAX NOTES DJANGO STYLE</title>
+		<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$(".update_button").hide()
+
+			$(document).on("submit", "form", function(){
+				var action = $(this).attr('action');
+				var data = {};
+
+				for(var input of $(this).children()){
+					if (input.name) data[input.name] = input.value;
+					if (input.name == "title")  input.value = "";
+				}
+
+				$.ajax({
+					url: action+"/ajax", 
+					method: 'post',
+					data: data,
+					success: function(response) {
+						$('#all_notes').html(response);
+					}
+				})
+
+				return false;
+			})
+
+			$(document).on('change', "textarea", function(){
+				$(this).parent().submit()
+			})
+
+		})
+	</script>
+	</head>
+	<body>
+
+		<h1>Hello ajax notes</h1>
+
+		<div id="all_notes">
+
+			{% for note in notes %}
+			<h3>{{note.title}}</h3>
+			<form action="/notes/{{note.id}}/desc" method="post">
+				<textarea name="description" placeholder="Enter a description">{{note.description}}</textarea>
+				{% csrf_token %}
+
+				<input class="update_button" type="submit" value="Update Description">
+			</form>
+
+			<form class="" action="/notes/{{note.id}}/delete" method="post">
+				{% csrf_token %}
+				<input type="submit" value="Delete">
+			</form>
+
+			{% endfor %}
+
+		</div>
+
+		<hr>
+		<form id='add_note' action='/notes' method='POST'>
+			<input type="text" name="title" placeholder="Insert Note Title Here">
+			{% csrf_token %}
+			<input type="submit" value="Add Note">
+		</form>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Go Dashboard</title>
+	{% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
+</head>
+<body>
+	<h1>Welcome to the UserGo Dashboard</h1>
+	{% if messages %}
+                {% for message in messages %}
+                        <ul>
+                               <li>{{ messages }}</li>
+                        </ul>
+                {% endfor %}
+        {% endif %}
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Full Name</th>
+				<th>Email</th>
+				<th>Created At</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tr class="userData">
+		{% for user in allUsers %}
+			<td>{{user.id}}</td>
+			<td>{{user.first_name}} {{user.last_name}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.created_at}}</td>
+			<td><a href="/users/{{user.id}}">Show</a> <a href="/users/{{user.id}}/edit">Edit</a> <a href="/users/delete/{{user.id}}">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<h4><a href="/users/new">Add new user</a></h4>
+</body>
+</html>

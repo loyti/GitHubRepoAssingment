@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>User Go Dashboard</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
+</head>
+<body>
+        <h1>Please review your information for accuracy.</h1>
+        {% for message in messages %}
+                <ul>
+                        <li>{{ messages }}</li>
+                </ul>
+        {% endfor %}
+	<h2>Information for {{user.first_name}} with user ID: {{user.id}}</h2>
+        <form action="/users/{{user.id}}/update" method="POST">
+                <fieldset>
+                        {% csrf_token %}
+			<input type="hidden" name="id" value="{{user.id}}">
+                        <label>First Name:</label>
+                        <input type="text" name="first_name" value="{{user.first_name}}">
+                        <label>Last Name:</label>
+                        <input type="text" name="last_name" value="{{user.last_name}}">
+                        <label>Email:</label>
+                        <input type="text" name="email" value="{{user.email}}">
+                        <input type="submit" value="Update User">
+                </fieldset>
+        </form>
+        <h4><a href="/">Go Back</a></h4>
+</body>
+</html>

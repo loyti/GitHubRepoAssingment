@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<ul>
+		<li>{{user.id}}</li>
+	</ul>
+
+	<form action="/create_message">
+		<% csrf_token %>
+		
+	</form>
+
+	<h2>Messages for {{user.first_name}}:</h2>
+	<p>
+	{% for user_messages in user.post_set.all  %}
+
+	{{post.content}} @ {{post.created_at}} for {{post.recipient.first_name}}
+	{% endfor %}
+	</p>
+</body>
+</html>

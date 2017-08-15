@@ -1,0 +1,26 @@
+.buildings{
+	margin: 20px;
+	padding: 20px;
+	display: inline;
+	max-width: 125px;
+	max-height: 125px;
+}
+.red {
+	color: red;
+	font-size: bolder;
+}
+.green{
+	color: green;
+	font-size: bold;
+}
+.activities{
+	max-width: 500px;
+	margin: 20px;
+	padding: 20px;
+	border: 3px solid grey;
+	flex-wrap: wrap;
+	border-radius: 5px;
+	max-height: 50px;
+	overflow: scroll;
+}
+

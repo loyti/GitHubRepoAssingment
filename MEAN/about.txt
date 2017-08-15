@@ -1,3 +1,40 @@
+FULL MEAN
+
+Frontend
+First Slice => component - most interaction with client
+
+Next Slice => onSubmit() - calls a function for a service
+
+Next Slice => this._http.get('...') => .map...
+
+Frontend
+______________________________________________
+Backend
+
+Next Slice => routes.js / routing file => app.get('...', controller.action)
+
+Next Slice => controller.js / business logic brains of site / sends back response
+
+res.render('index', someObj) (old way)
+MUST respond with something
+res.status(true)
+res.send(200)
+res.json(someObj);
+
+Sending response with json
+
+Service response to component
+.re(Response=> Response.json())
+.toPromise()
+
+Component
+.then
+.catch
+__________________________
+
+Prioritization
+Weather
+
 great things to have available
 
 error codes =>

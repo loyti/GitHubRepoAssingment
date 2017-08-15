@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>User Go Dashboard</title>
+	{% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
+</head>
+<body>
+        <h1>Please complete the fields below to Add a new user</h1>
+	{% if messages %}
+		{% for message in messages %}
+			<ul>
+				<li>{{ messages }}</li>
+			</ul>
+		{% endfor %}
+	{% endif %}
+	<form action="create" method="POST">
+		<fieldset>
+			{% csrf_token %}
+			<label>First Name:</label>
+			<input type="text" name="first_name" placeholder="First Name">
+			<label>Last Name:</label>
+                        <input type="text" name="last_name" placeholder="Last Name">
+			<label>Email:</label>
+                        <input type="text" name="email" placeholder="name@domain.us">
+			<input type="submit" value="Create User">
+		</fieldset>
+	</form>
+	<h4><a href="/">Go Back</a></h4>
+</body>
+</html>

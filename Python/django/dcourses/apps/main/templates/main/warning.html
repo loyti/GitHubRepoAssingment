@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <title>Delete a Course</title>
+
+</head>
+<body>
+    <h1>Are you sure you want to delete a course</h1>
+    <p>Name: {{course.name}}</p>
+    <p>Description: {{descri.desc}}</p>
+    <a href="/">No</a>
+    <a href="/delete/{{course.id}}">Yes! I want to delete this</a>
+</body>
+</html>

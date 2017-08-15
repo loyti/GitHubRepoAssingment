@@ -1,0 +1,13 @@
+{% for note in notes %}
+<h3>{{note.title}}</h3>
+<form action="/notes/{{note.id}}/desc" method="post">
+	<textarea name="description" placeholder="Enter a description">{{note.description}}</textarea>
+	{% csrf_token %}
+</form>
+
+<form class="" action="/notes/{{note.id}}/delete" method="post">
+	{% csrf_token %}
+	<input type="submit" value="Delete">
+</form>
+
+{% endfor %}

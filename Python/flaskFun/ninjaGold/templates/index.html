@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Gold</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+	<h1>Ninja Gold</h1>
+	<h3>Your Gold: {{session['gold']}}</h3>
+	<div class="buildings">
+	<form class="farm" action='/process_gold' method="POST">
+		<fieldset>
+			<legend>Farm</legend>
+			<input type="hidden" name="building" value="farm">
+			<input type="submit" value="Find Gold">
+		</fieldset>
+	</form>
+	<form class="cave" action='/process_gold' method="POST">
+		<fieldset>
+                        <legend>Cave</legend>
+			<input type="hidden" name="building" value="cave">
+        	        <input type="submit" value="Find Gold">
+		</fieldset>
+	</form>
+	<form class="house" action='/process_gold' method="POST">
+		<fieldset>
+                        <legend>House</legend>
+			<input type="hidden" name="building" value="house">
+        	        <input type="submit" value="Find Gold">
+		</fieldset>
+	</form>
+	<form class="casino" action='/process_gold' method="POST">
+		<fieldset>
+                        <legend>Casino</legend>
+			<input type="hidden" name="building" value="casino">
+        	        <input type="submit" value="Find Gold">
+		</fieldset>
+	</form>
+	<form action='/noGold'>
+		<input type="submit" value="New Game">
+	</form>
+	<div>
+	<h4>Activities:</h4>
+	<div class="activities">
+		{% for activity in session['activities'] %}
+		<p class="{{activity[1]}}"> {{ activity[0] }}</p>
+		{% endfor %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+.wrapper {
+        margin: 20px;
+        padding: 20px;
+        display: inline-block;
+}
+.errors{
+	padding: 5px;
+	margin: 5px;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+}
+.leftBody {
+	display: block;
+	margin: 20px;
+        padding: 20px;
+}
+
+.rightBody {
+	display: block;
+	margin: 20px;
+        padding: 20px;
+}
+
+.count {
+        border: 3px solid #000;
+        border-radius: 5px;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        font-weight: bolder;
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+}
+
+.allWords {
+        border: 3px solid #000;
+        border-radius: 5px;
+        background-color: rgba(0,0,0,0.5);
+        font-weight: bolder;
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+}
+
+#newWord, .newWord {
+	margin: 20px;
+	padding: 20px;
+	background-color: rgba(0,0,255,0.75);
+	color: #fff;
+        font-weight: bolder;
+        text-align: center;
+}
+#clearAll, .clearAll {
+	margin: 20px;
+        padding: 20px;
+        background-color: rgba(255,0,0,0.75);
+        color: #fff;
+        font-weight: bolder;
+        text-align: center;
+}
+
+.red{
+	color: rgba(255,0,0,.9);
+	font-size: 20px;
+}
+.green{
+	color: rgba(0,255,0,.9);
+	font-size: 20px;
+}
+.blue{
+	color: rgba(0,0,255,.9);
+	font-size: 20px;
+}
+

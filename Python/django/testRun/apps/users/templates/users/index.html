@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1>Add User</h1>
+	<ul>
+	{% for user in users %}
+	
+	{% endfor %}
+	</ul>
+	<form action='/new'>
+		{% csrf_token %}
+		<label>FIrst Name:
+		<input type="text" name="first_name"
+	</form>
+</body>
+</html>

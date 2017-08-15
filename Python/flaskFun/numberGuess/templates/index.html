@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Welcome to the Number Guessing Game</h1>
+	<p>I am thinking of a number between 1 and 100</p>
+	<p>Take a guess!</p>
+	<form class="formButton" action="/process_guess" method="POST">
+		<input type="text" name="numberGuess">
+		<input type="submit" value="Compare">
+	</form>
+
+	{{session['userOutcome']}}
+	{% if session['userOutcome'] == 'Amazing! You guessed it!'%}
+	<form class="fromButton" action='/clearNum' method="POST">
+		<input type="submit" value="New Game">
+	</form>
+	{% endif %}
+</body>
+</html>

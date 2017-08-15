@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quotable Quotes</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'main/style.css' %}">
+  <link rel="stylesheet" href="{% static 'main/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'main/bootstrap-theme.css' %}">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 jumbotron">
+        <h1>Welcome {{ user.user_name }} or {{ user.alias }} to Quotable Quotes</h1>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-2"></div>
+      <div class="col-md-3">
+        <h2>Quotable Quotes</h2>
+        {% for quote in quotes %}
+        <p>{{ quote.author }}</p>
+        <p>{{ quote.content }}</p>
+        <p>Posted by: <a href="/user/{{ quote.user.id }}">{{ quote.user.user_name }}</a></p>
+        <form action="/addFav/{{quote.id}}" method="post" class="form-horizontal">
+              {% csrf_token %}
+              <input type="submit" value="Add to FavQs">
+        </form>
+        {% endfor %}
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <h2>Your Favorites</h2>
+        {% for fav in favs %}
+        <p>{{ fav.authort }}</p>
+        <p>{{ fav.content }}</p>
+        <p>Posted by: <a href="/user/{{fav.user.id}}">{{ fav.user.user_name }}</a></p>
+        <form action="/unFav/{{fav.id}}" method="post">
+          {%csrf_token%}
+          <input type="submit" value="Remove From My List">
+        </form>
+        {% endfor %}
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <a href='/logout'>Logout</a>
+        <form action="/new_quote" method="post" class="form-horizontal">
+          <fieldset>
+            <legend>New Quote</legend>
+            {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            {% csrf_token %}
+            <div class="form-group">
+              <label>Quoted By:
+                <input class="form-control" type="text" name="author">
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Message:
+                <input class="form-control" type="text" name="content">
+              </label>
+              <input class="form-control" type="hidden" name="userQuoteCount" value=1>
+            </div>
+            <div class="form-group">
+              <input class="btn btn-success" type="submit" value="Add Quote">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</body>
+</html>

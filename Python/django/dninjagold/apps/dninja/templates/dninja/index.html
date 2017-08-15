@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Django Ninja Gold</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'dninja/style.css'%}">
+</head>
+<body>
+	<h1>Ninja Gold</h1>
+	<h3>Your Gold: {{ request.session.gold }}</h3>
+	<div class="buildings">
+	<div class="building">
+		<form class="farm" action='/process_gold' method="POST">
+			<fieldset>
+				<legend>Farm</legend>
+				{% csrf_token %}
+				<input type="hidden" name="building" value="farm">
+				<input type="submit" value="Find Gold">
+			</fieldset>
+		</form>
+	</div>
+	<div class="building">
+		<form class="cave" action='/process_gold' method="POST">
+			<fieldset>
+				{% csrf_token %}
+				<legend>Cave</legend>
+				<input type="hidden" name="building" value="cave">
+				<input type="submit" value="Find Gold">
+			</fieldset>
+		</form>
+	</div>
+	<div class="building">
+		<form class="house" action='/process_gold' method="POST">
+			<fieldset>
+				{% csrf_token %}
+                        	<legend>House</legend>
+				<input type="hidden" name="building" value="house">
+        	        	<input type="submit" value="Find Gold">
+			</fieldset>
+		</form>
+	</div>
+	<div class="building">
+		<form class="casino" action='/process_gold' method="POST">
+			<fieldset>
+				{% csrf_token %}
+                        	<legend>Casino</legend>
+				<input type="hidden" name="building" value="casino">
+        		        <input type="submit" value="Find Gold">
+			</fieldset>
+		</form>
+	</div>
+	<form action='/noGold'>
+		{% csrf_token %}
+		<input type="submit" value="New Game">
+	</form>
+	<div>
+		{% for activity in request.session.activities %}
+                <p class ="{{ activity.1  }}">{{ activity.0 }}</p>
+                {% endfor %}
+	</div>
+</body>
+</html>
