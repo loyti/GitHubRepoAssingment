@@ -59,7 +59,7 @@ module.exports = {
     })
   },
   getCurrent: (req,res)=>{
-    if(req.session.playerOne.score > req.session.playerTwo.score){
+    if(req.session.playerOne.score < req.session.playerTwo.score){
       var playerArr = [req.session.playerOne, req.session.playerTwo]
     } else {
       var playerArr = [req.session.playerTwo, req.session.playerOne]
@@ -71,6 +71,6 @@ module.exports = {
     res.json(playerArr);
   },
   show: (req,res)=>{
-    Player.findOne({}).get
+    Player.findOne(req.body)
   }
 }

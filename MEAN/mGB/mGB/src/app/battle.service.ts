@@ -32,4 +32,8 @@ export class BattleService {
     return this._http.get('/api/current_players').
     map(Response=>Response.json()).toPromise();
   }
+
+  show(player){
+    return this._http.post('/api/show', {_id: player}).map(Response=>Response.json()).toPromise();
+  }
 }

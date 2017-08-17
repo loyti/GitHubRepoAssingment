@@ -20,10 +20,10 @@ export class ShowPlayerComponent implements OnInit {
     console.log(this._route.params);
     this.subscription = this._route.paramMap.switchMap((params)=>{
       return this._battleService.getPlayer(params.get('id'))
-    }).subscribe((player)=>{
+    }).subscribe(player=>
         this.userId = player._id,
-        this.player = player,
-    })
+        // this.player = player,
+    )
   }
 
 }
