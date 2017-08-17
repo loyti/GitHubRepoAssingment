@@ -4,7 +4,7 @@ var Player = mongoose.model('Player');
 module.exports = {
   index: (req, res)=>{
     console.log('players index');
-    Player.find({}).orderBy('-score').exec((err,players)=>{
+    Player.find({}).sort('-score').exec((err,players)=>{
       if(err){
         console.log('something went wrong');
         res.json(err);
@@ -59,18 +59,35 @@ module.exports = {
     })
   },
   getCurrent: (req,res)=>{
-    if(req.session.playerOne.score < req.session.playerTwo.score){
+    if(req.session.playerOne.score > req.session.playerTwo.score){
       var playerArr = [req.session.playerOne, req.session.playerTwo]
     } else {
       var playerArr = [req.session.playerTwo, req.session.playerOne]
     }
-    var playerArr = [
-      req.session.playerOne,
-      req.session.playerTwo
-    ];
     res.json(playerArr);
   },
   show: (req,res)=>{
-    Player.findOne(req.body)
-  }
+    console.log("in players show, this is the id", req.params.id);
+    Player.findOne({_id: req.params.id}).exec((err,player)=>{
+			if(err){
+				console.log("something went wrong");
+				res.json(err);
+			}else{
+				console.log("found player", player);
+				res.json(player);
+			}
+		})
+  },
+  delete: (req,res)=>{
+		console.log("in the players delete")
+		Player.findOne({_id: req.params.id}).remove().exec((err)=>{
+			if(err){
+				console.log("something went wrong");
+				res.json(err);
+			}else{
+				console.log("deleted player");
+				res.json({message: "player deleted"});
+			}
+		})
+	}
 }

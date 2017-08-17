@@ -1,6 +1,8 @@
 <h3>Rankings</h3>
 <fieldset *ngFor="let player of players; let i = index">
-  <h4>{{i + 1}}</h4>
+  <h4>Rank: {{i + 1}}</h4>
   <img style="height: 200px; width: auto" src="{{player.photoPath}}">
-  <p>{{player.username}}</p>
+  <p><a [routerLink]="['/players', player._id]">Name: {{player.username}}</a></p>
+  <p>Score: {{player.score}}</p>
+  <button (click)="deletePlayer(player._id)">Delete this player</button>
 </fieldset>

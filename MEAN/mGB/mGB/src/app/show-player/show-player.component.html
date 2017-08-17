@@ -1,3 +1,7 @@
-<p>
-  show-player works!
-</p>
+<h2>You are looking at player with id {{userId}}</h2>
+
+{{player | json}}
+
+<form>
+	<p>Name: <input type="text" name="username" [(ngModel)]="player.username"></p>
+</form>

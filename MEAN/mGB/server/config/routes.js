@@ -5,6 +5,9 @@ module.exports  = function(app){
   app.get('/api/players', Players.index);
   app.post('/api/players', Players.create);
   app.get('/api/current_players', Players.getCurrent);
-  app.get('/api/show', Players.show);
-
+  app.get('/api/players/:id', Players.show);
+  app.delete('/api/players/:id', Players.delete);
+	app.all("*", (req,res,next) => {
+        res.sendFile(path.resolve("./mGB/dist/index.html"))
+  });
 };

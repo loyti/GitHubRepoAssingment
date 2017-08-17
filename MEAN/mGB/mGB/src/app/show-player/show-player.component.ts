@@ -13,17 +13,14 @@ import { Subscription } from 'rxjs/Subscription';
 export class ShowPlayerComponent implements OnInit {
   userId: string;
   subscription: Subscription;
+  player: object;
 
-  constructor(private _route: ActivatedRoute, private _battleService: BattleService) { }
+  constructor(private _battleService: BattleService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
     console.log(this._route.params);
     this.subscription = this._route.paramMap.switchMap((params)=>{
       return this._battleService.getPlayer(params.get('id'))
-    }).subscribe(player=>
-        this.userId = player._id,
-        // this.player = player,
-    )
+    }).subscribe((player) => {this.userId = player._id; this.player = player;});
   }
-
 }
