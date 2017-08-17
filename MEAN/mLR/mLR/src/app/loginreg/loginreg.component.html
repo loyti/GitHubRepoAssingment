@@ -1,0 +1,28 @@
+<h2>Register a new user</h2>
+<form (submit)=register(newUser)>
+  <p *ngIf="name.invalid">Please tell us your name</p>
+  <p>Name: <input type="text" name="name"
+    [(ngModel)]="newUser.name"
+    #name="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <p>Email: <input type="text" name="email"
+    [(ngModel)]="newUser.email"
+    #email="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <p *ngIf="newUser.password!=newUser.passConf">Passwords must match</p>
+  <p>Password: <input type="password" name="password"
+    [(ngModel)]="newUser.password"
+    #password="ngModel"
+  ></p>
+  <p>Password Confirmation: <input type="password" name="passConf"
+    [(ngModel)]="newUser.passConf"
+    #passConf="ngModel"
+  ></p>
+  <input [disabled]='newUser.password!=newUser.passConf' type="submit" name=''>
+</form>
+
+<h2>Existing Users Login</h2>

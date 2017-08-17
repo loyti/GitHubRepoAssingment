@@ -1,0 +1,62 @@
+how to deploy to aws
+
+from the project files remove the .git file rm -rf
+
+modify .gitignore remove '/dist'
+
+/node_modules
+.DS_Store
+
+setup AWS
+
+ubuntu 16.04
+general purpose
+instance deailts
+
+security groups
+
+review & launch => create new key pair
+download into pemkey dir
+
+change pemkey permissions chmod 400 ...pem
+
+ssh into ip
+
+sudo apt-get update
+sudo apt-get install dependencies
+
+sudo apt-get install nodejs nodejs-legacy npm
+sudo npm cache clean -f
+
+sudo npm install -g n
+
+sudo apt-get install nginx
+sudo apt-get install git
+
+sudo mkdir /var/www
+
+cd /var/www
+
+sudo git clone 'repository link'
+
+cd /etc/nginx/sites-available
+
+sudo nano sudo 'git repository name'
+
+
+pm2 process manager
+tell nginx to server designated 'server.js'
+
+pm2 show 0
+be sure to reload & restart nginx server
+sudo npm install
+
+
+mongod
+
+sudo
+
+
+sudo mkdir data
+sudo mkdir data/db
+chown ubuntu on both directories

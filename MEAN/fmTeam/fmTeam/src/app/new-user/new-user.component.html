@@ -1,0 +1,19 @@
+<div style="display: inline-block; margin: 20px; padding: 20px;">
+  <form (submit)=create(newUser)>
+    <p *ngIf="newUser.name.errors.minlength">Name is too short!</p>
+    <p>Name: <input type="text" name="name"
+      [(ngModel)]="newUser.name"
+      #name=ngModel
+      minlength=4
+      required=true
+    ></p>
+    <p *ngIf="newUser.name.errors.required">Please select your Preferred Position!</p>
+    <p>Preferred Position: <input type="text" name="pPosition"
+      [(ngModel)]="newUser.pPosition"
+      #name=ngModel
+      minlength=4
+      required=true
+    ></p>
+    <input type="submit" name="">
+  </form>
+</div>
