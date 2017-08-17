@@ -1,0 +1,37 @@
+<fieldset>
+  <h2>Player 1</h2>
+  <div *ngIf="!playerOneFound">
+  <form (submit)='addPlayer(1, playerOne)'>
+    <p>Github Username: <input type='text' name='username'
+      [(ngModel)]='playerOne.username'
+      #p1Username='ngModel'
+
+    ></p>
+    <input type="submit" value="Get User">
+  </form>
+  </div>
+  <div *ngIf="playerOneFound">
+    <img style="height: 200px; width: auto;" src='{{playerOne.photoPath}}'>
+    <p>{{playerOne.username}}</p>
+  </div>
+
+</fieldset>
+
+<fieldset>
+  <h2>Player 2</h2>
+  <div *ngIf="!playerTwoFound">
+  <form (submit)='addPlayer(2, playerTwo)'>
+    <p>Github Username: <input type='text' name='username'
+      [(ngModel)]='playerTwo.username'
+      #p2Username='ngModel'
+    ></p>
+    <input type="submit" value="Get User">
+  </form>
+</div>
+<div *ngIf="playerTwoFound">
+  <img style="height: 200px; width: auto;" src='{{playerTwo.photoPath}}'>
+  <p>{{playerTwo.username}}</p>
+</div>
+</fieldset>
+
+<button *ngIf="playerOneFound && playerTwoFound" (click)='startBattle()'>Battle!</button>

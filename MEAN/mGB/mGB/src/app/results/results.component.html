@@ -1,0 +1,8 @@
+<div *ngIf='players'>
+  <h2>Winner</h2>
+  <p>{{players[0].username}} (Score: {{players[0].score}})</p>
+  <img src='{{players[0].photoPath}}'>
+  <h2>Loser</h2>
+  <p>{{players[1].username}} (Score: {{players[1].score}})</p>
+  <img src='{{players[1].photoPath}}'>
+</div>
