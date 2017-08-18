@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { LoginComponent } from './../login/login.component';
 import { ShowComponent } from './../show/show.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-bucket',
