@@ -1,0 +1,34 @@
+<h2>Welcome {{ currentUser }}</h2>
+<form #bucketForm="ngForm" (submit)=create(newBitem)>
+  <p *ngIf="bTitle.invalid">Please Enter Bucket List Title</p>
+  <p><input type="text" name="bTitle"
+    placeholder="Title"
+    [(ngModel)]="newBitem.bTitle"
+    #bTitle="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <p *ngIf="bDescription.invalid">Please Enter Bucket List Description</p>
+  <p><input type="text" name="bDescription"
+    placeholder="Description"
+    [(ngModel)]="newBitem.bDescription"
+    #bDescription="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <p *ngIf="bOwner.invalid">Please Select a Bucket List Owner</p>
+  <p><select name="bOwner"
+    [(ngModel)]="newBitem.bOwner"
+    #bOwner="ngModel"
+    required=true>
+      <option *ngFor="let user of users" [ngValue]="bOwner">
+        {{ users.username }}
+      </option>
+    </select>
+  </p>
+  <input type="hidden" name="bStatus" value="false"
+  [(ngModel)]="newBitem.bStatus"
+  #bStatus="ngModel"
+  >
+  <input [disabled]='!bucketForm.form.valid' type="submit" name='' value="Add to List">
+</form>
