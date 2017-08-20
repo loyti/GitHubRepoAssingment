@@ -1,2 +1,15 @@
-<h2>Get Ready to Play</h2>
-<p *ngIf="currentUser">Welcome, {{currentUser.name}}</p>
+<h2*ngIf="currentUser">Welcome, {{currentUser.name}}Welcome</h2>
+<p>Please verifiy your information</p>
+<div *ngIf="currentUser">
+  <p><a routerLink="['/dashboard']">Verify Information</a></p>
+<fieldset>
+  <form>
+    <p>Name: <input type="text" name="name"
+      [(ngModel)]="currentUser.username"
+    ></p>
+    <p>Email: <input type="text" name="email"
+      [(ngModel)]="currentUser.email"
+    ></p>
+  </form>
+</fieldset>
+</div>

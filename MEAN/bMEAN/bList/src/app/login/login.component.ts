@@ -11,7 +11,7 @@ import { BucketComponent } from './../bucket/bucket.component';
 })
 export class LoginComponent implements OnInit {
   newUser: object = {username: ''}
-
+  user: object[];
   constructor(private _doService: DoService, private _router: Router) { }
 
   ngOnInit() {
@@ -26,6 +26,19 @@ export class LoginComponent implements OnInit {
     })
     .catch((error)=>{
       console.log(error);
+    })
+  }
+
+  userInfo(user){
+    console.log('in userInfo')
+    this._doService.userInfo(user)
+    .then((response)=>{
+      this.user = response;
+  		// this.sortItems(this.user.items);
+      this._router.navigate(['/users', user]);
+    })
+    .catch((error)=>{
+      console.log('something went wrong', error)
     })
   }
 }

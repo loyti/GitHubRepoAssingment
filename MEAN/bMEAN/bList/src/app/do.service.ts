@@ -22,7 +22,27 @@ export class DoService {
     return this._http.get('/api/users/'+userId)
     .map(Response=>Response.json()).toPromise();
   }
-  // newBitem(bItem){
-  //
-  // }
+  newBitem(bItem){
+    console.log('in service new bucket item');
+    return this._http.post('/api/bucketItems', bItem)
+    .map(Response=>Response.json()).toPromise();
+  }
+  allBucket(){
+    console.log('in service all bucket items');
+    return this._http.get('/api/bucketItems')
+    .map(Response=>Response.json()).toPromise();
+  }
+  allUser(users){
+    console.log('in service all users');
+    return this._http.get('/api/allUsers')
+    .map(Response=>Response.json()).toPromise();
+  }
+  logout(){
+  	return this._http.get('/api/users/logout')
+  	.map(res=>res.json()).toPromise();
+  }
+  userInfo(user){
+  	return this._http.get('/api/users/' + user)
+  	.map(res=>res.json()).toPromise();
+  }
 }

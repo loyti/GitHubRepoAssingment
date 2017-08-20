@@ -1,51 +1,24 @@
 var mongoose = require('mongoose');
 var Bitem = mongoose.model('Bitem');
+var User = mongoose.model('User');
 
 module.exports = {
-  index: (req, res) => {
-    console.log('users index');
-    // User.find({}).sort('').exec((err,users)=>{
-    //   if(err){
-    //     console.log('something went wrong');
-    //     res.json(err);
-    //   } else {
-    //     console.log('acquired all');
-    //     res.json(users);
-    //   }
-    // });
-  },
   create: (req,res) => {
     console.log('create');
     console.log(req.body);
-    User.findOne({username: req.body.username}).exec((err,user)=>{
-      if(user){
-        console.log('user already in db, updating values')
-        user.username = req.body.username;
-        user.save((err, savedUser)=>{
-          if (err){
-            console.log('something went wrong');
-            res.json(err);
-          } else {
-            console.log('updated existing user, adding to session');
-            req.session.userId = savedUser._id;
-            console.log('session updated: ', req.session)
-            res.json(savedUser);
-          }
-        })
+    var newBitem = new Bitem({
+      bTitle: req.body.bTitle,
+      bDescription: req.body.bDescription,
+      bTagged: req.body.bTagged,
+      bStatus: req.body.bStatus,
+      bOwner: req.session.username,
+    })
+    newBitem.save((err,savedBitem) => {
+      if(err){
+        console.log('something went wrong',err);
       } else {
-        console.log('user not in db, creating new user');
-        var newUser = new User({username: req.body.username});
-        newUser.save((err,savedUser) => {
-          if (err){
-            console.log('something went wrong');
-            res.json(err);
-          } else {
-            console.log('created new user, adding to session');
-            req.session.user = savedUser;
-            console.log('session updated: ', req.session);
-            res.json(savedUser);
-          }
-        })
+        console.log('creating new bucket item');
+        res.json(savedBitem);
       }
     })
   },
@@ -62,27 +35,26 @@ module.exports = {
     })
   },
   dashboard: (req, res) => {
-    console.log('users index');
-    User.find({}).sort('').exec((err,users)=>{
+    Bitem.find({bOwner: req.session.username}, (err, allBitems) =>{
       if(err){
-        console.log('something went wrong');
-        res.json(err);
+        console.log('somehting went wrong', err);
       } else {
-        console.log('acquired all');
-        res.json(users);
+        console.log('all bucket items found');
+        res.json(allBitems);
       }
     });
+
   },
-  show: (req, res) => {
-    console.log('users show');
-    // User.find({}).sort('').exec((err,users)=>{
-    //   if(err){
-    //     console.log('something went wrong');
-    //     res.json(err);
-    //   } else {
-    //     console.log('acquired all');
-    //     res.json(users);
-    //   }
-    // });
-  }
+  // bOwner: (req, res) => {
+  //   console.log('users show');
+  //   // User.find({}).sort().exec((err,users)=>{
+  //   //   if(err){
+  //   //     console.log('something went wrong');
+  //   //     res.json(err);
+  //   //   } else {
+  //   //     console.log('acquired all');
+  //   //     res.json(users);
+  //   //   }
+  //   // });
+  // }
 }

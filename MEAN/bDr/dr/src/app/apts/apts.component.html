@@ -1,0 +1,27 @@
+<div>
+  <h4 style="text-align: right"><a [routerLink]="['/logout']">Logout</a></h4>
+</div>
+<div>
+  <h2 style="text-align: left">Welcome {{ currentUser.username }}</h2>
+  <h4 style="background: rgba(0,0,200,.8); border-radius: 5px; color: #fff">
+    <a [routerLink]="['/adda']">Add New Appointment</a>
+  </h4>
+  <table>
+    <thead>
+      <tr>
+        <td>Date</td>
+        <td>Time</td>
+        <td>Patient Name</td>
+        <td>Reason</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let apt of allApts">{{ apt.aDate }}</td>
+        <td *ngFor="let apt of allApts">{{ apt.aTime }}</td>
+        <td *ngFor="let apt of allApts">{{ apt.aName }}</td>
+        <td *ngFor="let apt of allApts">{{ apt.aReason }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

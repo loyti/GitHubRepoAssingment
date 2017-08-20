@@ -1,4 +1,4 @@
-<h2>Welcome {{ currentUser }}</h2>
+<h2>Welcome {{ currentUser.username }}</h2>
 <form #bucketForm="ngForm" (submit)=create(newBitem)>
   <p *ngIf="bTitle.invalid">Please Enter Bucket List Title</p>
   <p><input type="text" name="bTitle"
@@ -16,13 +16,12 @@
     minlength=4
     required=true
   ></p>
-  <p *ngIf="bOwner.invalid">Please Select a Bucket List Owner</p>
-  <p><select name="bOwner"
-    [(ngModel)]="newBitem.bOwner"
-    #bOwner="ngModel"
-    required=true>
-      <option *ngFor="let user of users" [ngValue]="bOwner">
-        {{ users.username }}
+  <p><select name="bTagged"
+    [(ngModel)]="newBitem.bTagged"
+    #bTagged="ngModel"
+    >
+      <option *ngFor="let user of users" [ngValue]="user.username">
+        {{ user.usernamme }}
       </option>
     </select>
   </p>
@@ -33,6 +32,6 @@
   <input [disabled]='!bucketForm.form.valid' type="submit" name='' value="Add to List">
 </form>
 <h4>Before I die I want to...</h4>
-<p *ngFor="let bItem of bItems">{{ bItem.bTitle }} - {{ bItem.bDescription }} - {{ bItem.createdAt | date:'medium' }}<p>
+<p *ngFor="let bItem of bItems"><a [routerLink]="['/bOwners']">{{ bItem.bOwner }}</a>: {{ bItem.bTitle }} - {{ bItem.bDescription }} - {{ bItem.createdAt | date:'medium' }}<p>
 <h4>List of users<h4>
-<p *ngFor="let user of users"><a [routerLink]="['/users', user._id]">Name: {{user.username}}</a></p>
+<p *ngFor="let user of users"><a [routerLink]="['/user', user._id]">Name: {{ user.username }}</a></p>

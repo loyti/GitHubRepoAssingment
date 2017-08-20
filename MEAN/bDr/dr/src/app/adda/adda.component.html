@@ -1,0 +1,31 @@
+<div>
+  <h2>New Appointment</h2>
+</div>
+<form #aptForm="ngForm" (submit)=create(newApt)>
+  <p *ngIf="aDate.invalid">Please Select Date</p>
+  <p>Date:<input type="date" name="aDate"
+    [(ngModel)]="newApt.aDate"
+    #aDate="ngModel"
+    required=true
+  ></p>
+  <p *ngIf="aTime.invalid">Please Select Time</p>
+  <p>Time:<input type="datetime" name="aTime"
+    [(ngModel)]="newApt.aTime"
+    #aTime="ngModel"
+    required=true
+  ></p>
+  <input type="hidden" name="aName"
+    [(ngModel)]="newApt.aName"
+    #aName="ngModel"
+    value={{currentUser.username}}
+  >
+  <p *ngIf="aReason.invalid">Please Describe Reason</p>
+  <p>Reason:<input type="text" name="aReason"
+    [(ngModel)]="newApt.aReason"
+    #aReason="ngModel"
+    minlength=10
+    required=true
+  ></p>
+  <button [routerLink]="['/dashboard']">Cancel</button>
+  <button [disabled]='!aptForm.form.valid' type="submit" name="" [routerLink]="['/dashboard']">Add Appointment</button>
+</form>

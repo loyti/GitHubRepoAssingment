@@ -4,6 +4,7 @@ from the project files remove the .git file rm -rf
 
 modify .gitignore remove '/dist'
 
+Keep within
 /node_modules
 .DS_Store
 
@@ -41,7 +42,7 @@ sudo git clone 'repository link'
 
 cd /etc/nginx/sites-available
 
-sudo nano sudo 'git repository name'
+sudo nano 'git repository name'
 
 
 pm2 process manager

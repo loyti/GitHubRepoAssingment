@@ -25,7 +25,7 @@ app.use(bodyParser.json({extended: true}));
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
 
-var port = 8123;
+var port = 8122;
 app.listen(port, function(){
   console.log('listening on port: ', port);
 });

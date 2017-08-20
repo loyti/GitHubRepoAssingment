@@ -2,18 +2,6 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 module.exports = {
-  index: (req, res) => {
-    console.log('users index');
-    // User.find({}).sort('').exec((err,users)=>{
-    //   if(err){
-    //     console.log('something went wrong');
-    //     res.json(err);
-    //   } else {
-    //     console.log('acquired all');
-    //     res.json(users);
-    //   }
-    // });
-  },
   create: (req,res) => {
     console.log('create');
     console.log(req.body);
@@ -28,6 +16,7 @@ module.exports = {
           } else {
             console.log('updated existing user, adding to session');
             req.session.userId = savedUser._id;
+            req.session.username = savedUser.username;
             console.log('session updated: ', req.session)
             res.json(savedUser);
           }
@@ -62,28 +51,31 @@ module.exports = {
     })
   },
   dashboard: (req, res) => {
-    console.log('users index');
-    User.findOne({username: req.body.user.username}).exec((err,user)=>{
+    console.log("in users dashboard, this is the id", req.params.id);
+    User.findOne({_id: req.params.id}).exec((err,user)=>{
+			if(err){
+				console.log("something went wrong");
+				res.json(err);
+			}else{
+				console.log("found user", user);
+				res.json(user);
+			}
+		})
+  },
+  showAll: (req, res) => {
+    console.log('users show');
+    User.find({}, (err, users) =>{
       if(err){
         console.log('something went wrong');
         res.json(err);
       } else {
-        console.log('acquired username');
-        req.session.user = savedUser;
-        res.json(savedUser);
+        console.log('acquired all users');
+        res.json(users);
       }
     });
   },
-  show: (req, res) => {
-    console.log('users show');
-    // User.find({}).sort('').exec((err,users)=>{
-    //   if(err){
-    //     console.log('something went wrong');
-    //     res.json(err);
-    //   } else {
-    //     console.log('acquired all');
-    //     res.json(users);
-    //   }
-    // });
-  }
+  logout: (req, res)=>{
+		delete req.session.name;
+		res.json(true);
+	},
 }
