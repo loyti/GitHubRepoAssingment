@@ -35,12 +35,12 @@ module.exports = {
     })
   },
   dashboard: (req, res) => {
-    Apt.find({}, (err, allApts) =>{
+    Apt.find({}, (err, apts) =>{
       if(err){
         console.log('somehting went wrong', err);
       } else {
-        console.log('all bucket items found');
-        res.json(allApts);
+        console.log('all apts items found');
+        res.json(apts);
       }
     });
 

@@ -16,11 +16,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td *ngFor="let apt of allApts">{{ apt.aDate }}</td>
-        <td *ngFor="let apt of allApts">{{ apt.aTime }}</td>
-        <td *ngFor="let apt of allApts">{{ apt.aName }}</td>
-        <td *ngFor="let apt of allApts">{{ apt.aReason }}</td>
+      <tr *ngFor="let apt of apts">
+        <td>{{ apt.aDate }}</td>
+        <td>{{ apt.aTime }}</td>
+        <td>{{ apt.aName }}</td>
+        <td>{{ apt.aReason }}</td>
       </tr>
     </tbody>
   </table>

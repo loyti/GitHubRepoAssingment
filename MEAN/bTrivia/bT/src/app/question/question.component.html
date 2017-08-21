@@ -1,0 +1,33 @@
+<h2>New Question: </h2>
+<form (submit)=create(newTq)>
+  <p *ngIf="question.invalid"><em>Please provide a better Question</em></p>
+  <p>Question: <input type="text" name="question"
+    [(ngModel)]="newTq.question"
+    #question="ngModel"
+    minlength=15
+    required=true
+  ></p>
+  <p *ngIf="answer.invalid"><em>Please provide a better Answer</em></p>
+  <p>Answer: <input type="text" name="answer"
+    [(ngModel)]="newTq.answer"
+    #answer="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <p *ngIf="fake1.invalid"><em>Please provide a better fake answer</em></p>
+  <p>Fake Answer 1: <input type="text" name="fake1"
+    [(ngModel)]="newTq.fake1"
+    #fake1="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <p *ngIf="fake2.invalid"><em>Please provide a better fake answer</em></p>
+  <p>Fake Answer 2: <input type="text" name="fake2"
+    [(ngModel)]="newTq.fake2"
+    #fake2="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <button [routerLink]="['/cancel']">Cancel</button>
+  <button [disabled]='!question.valid || !answer.valid || !fake1.valid || !fake2.valid' type="submit" name="">Add Question</button>
+</form>

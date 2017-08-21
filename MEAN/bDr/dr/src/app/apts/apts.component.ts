@@ -17,17 +17,12 @@ export class AptsComponent implements OnInit {
   currentUser: object;
   apts: object[];
   users: object[];
-  subscription: Subscription;
   newApt: object = {aDate: '', aTime: '', aName: '', aReason: ''};
   userId: string;
   constructor(private _doService: DoService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
     console.log(this._route.params);
-
-    this.subscription = this._route.paramMap.switchMap((params)=>{
-      return this._doService.getUser(params.get('userId'))
-    }).subscribe((users) => {this.users = users; this.userId = users._id;});
 
     this._doService.getCurrentUser()
     .then((response)=>{
@@ -39,6 +34,7 @@ export class AptsComponent implements OnInit {
     .catch((error)=>{
       console.log('catch',error);
     })
+    this.allApts();
   }
   create(apt){
     console.log(apt);
@@ -61,7 +57,9 @@ export class AptsComponent implements OnInit {
       this.apts = response;
     })
     .catch((error)=>{
+      console.log('in the component error')
       console.log(error)
+      console.log('finished with error log')
     })
   }
   allUsers(){

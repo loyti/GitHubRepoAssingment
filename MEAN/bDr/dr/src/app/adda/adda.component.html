@@ -1,7 +1,7 @@
 <div>
   <h2>New Appointment</h2>
 </div>
-<form #aptForm="ngForm" (submit)=create(newApt)>
+<form (submit)=create(newApt)>
   <p *ngIf="aDate.invalid">Please Select Date</p>
   <p>Date:<input type="date" name="aDate"
     [(ngModel)]="newApt.aDate"
@@ -27,5 +27,5 @@
     required=true
   ></p>
   <button [routerLink]="['/dashboard']">Cancel</button>
-  <button [disabled]='!aptForm.form.valid' type="submit" name="" [routerLink]="['/dashboard']">Add Appointment</button>
+  <button [disabled]='!aDate.valid || !aTime.valid || !aName.valid || !aReason.valid' type="submit" name="">Add Appointment</button>
 </form>

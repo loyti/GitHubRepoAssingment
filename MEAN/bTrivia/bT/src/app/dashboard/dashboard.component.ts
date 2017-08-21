@@ -5,46 +5,50 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { LoginComponent } from './../login/login.component';
-import { AptsComponent } from './../apts/apts.component';
-import { DatePipe } from '@angular/common';
+import { PlayComponent } from './../play/play.component';
 
 @Component({
-  selector: 'app-adda',
-  templateUrl: './adda.component.html',
-  styleUrls: ['./adda.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AddaComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
+  user: object;
   currentUser: object;
-  apts: object[];
-  users: object[];
-  newApt: object = {aDate: '', aTime: '', aName: '', aReason: ''};
+  subscription: Subscription;
   userId: string;
-  constructor(private _doService: DoService, private _router: Router, private _route: ActivatedRoute) { }
+
+  tq: object;
+  tqs: object[];
+  newTq: object;
+
+  constructor(private _doService: DoService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this._route.params);
 
     this._doService.getCurrentUser()
     .then((response)=>{
       console.log('then');
       console.log(response);
       this.currentUser = response;
+
     })
     .catch((error)=>{
       console.log('catch',error);
     })
   }
-  create(apt){
-    console.log(apt);
-    console.log("in apts component create");
-    this._doService.newApt(apt)
+
+  allTqs(){
+    console.log('getting all trivia questions');
+    this._doService.allTq()
     .then((response)=>{
       console.log(response);
-      this._router.navigate(['/dashboard']);
+      this.tqs = response;
     })
     .catch((error)=>{
-      console.log(error);
+      console.log(error)
     })
   }
+
 }

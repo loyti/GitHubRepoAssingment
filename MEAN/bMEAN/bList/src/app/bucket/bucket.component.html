@@ -20,8 +20,8 @@
     [(ngModel)]="newBitem.bTagged"
     #bTagged="ngModel"
     >
-      <option *ngFor="let user of users" [ngValue]="user.username">
-        {{ user.usernamme }}
+      <option *ngFor="let user of users">
+        {{ user.username }}
       </option>
     </select>
   </p>

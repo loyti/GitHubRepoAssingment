@@ -15,7 +15,7 @@ const routes: Routes = [
     component: BucketComponent
   },
   {
-    path: 'users/:id',
+    path: 'user/:id',
     component: ShowComponent
   }
 ];
