@@ -28,6 +28,6 @@
     minlength=4
     required=true
   ></p>
-  <button [routerLink]="['/cancel']">Cancel</button>
+  <button [routerLink]="['/dashboard']">Cancel</button>
   <button [disabled]='!question.valid || !answer.valid || !fake1.valid || !fake2.valid' type="submit" name="">Add Question</button>
 </form>

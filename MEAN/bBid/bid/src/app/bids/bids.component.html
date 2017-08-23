@@ -1,0 +1,31 @@
+<h2>Bid Now</h2>
+
+  <form (submit)=addBid(newBid)>
+    <p *ngIf="bid.invalid"><em>Please provide a higher Bid</em></p>
+    <p>Item<input type="text" name="bid"
+      [(ngModel)]="newBid.bid"
+      #bid="ngModel"
+      required=true
+    ></p>
+    <button [disabled]='!bid.valid' type="submit" name="">Bid</button>
+  </form>
+
+<form (submit)=addBid(newBid)>
+  <p *ngIf="bid.invalid"><em>Please provide a higher Bid</em></p>
+  <p>Item<input type="text" name="bid"
+    [(ngModel)]="newBid.bid"
+    #bid="ngModel"
+    required=true
+  ></p>
+  <button [disabled]='!bid.valid' type="submit" name="">Bid</button>
+</form>
+
+<form (submit)=addBid(newBid)>
+  <p *ngIf="bid.invalid"><em>Please provide a higher Bid</em></p>
+  <p>Item<input type="text" name="bid"
+    [(ngModel)]="newBid.bid"
+    #bid="ngModel"
+    required=true
+  ></p>
+  <button [disabled]='!bid.valid' type="submit" name="">Bid</button>
+</form>

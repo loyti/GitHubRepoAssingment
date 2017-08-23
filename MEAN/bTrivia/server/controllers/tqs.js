@@ -5,11 +5,13 @@ module.exports = {
   create: (req,res) => {
     console.log('create');
     console.log(req.body);
-    Tq.find({question: req.body.question}).exec((err,tq)=>{
+    Tq.findOne({question: req.body.question}).exec((err,tq)=>{
       if(tq){
         console.log('question already in db, updating values')
-        Tq.save((err, savedTq)=>{
+        console.log(tq);
+        tq.save((err, savedTq)=>{
           if (err){
+
             console.log('something went wrong');
             res.json(err);
           } else {
@@ -18,7 +20,7 @@ module.exports = {
           }
         })
       } else {
-        console.log('questino not in db, creating new question');
+        console.log('question not in db, creating new question');
         var newTq = new Tq({
           question: req.body.question,
           answer: req.body.answer,

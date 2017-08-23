@@ -14,9 +14,9 @@ import { PlayComponent } from './../play/play.component';
 })
 export class QuestionComponent implements OnInit {
 
-  newTq: object;
+  newTq: object={ question: '', answer: '', fake1: '', fake2: ''};
 
-  constructor(private _doService: DoService, private _route: ActivatedRoute) { }
+  constructor(private _doService: DoService,private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -27,6 +27,7 @@ export class QuestionComponent implements OnInit {
     this._doService.newTq(newTq)
     .then((response)=>{
       console.log(response);
+      this._router.navigate(['/dashboard'])
     })
     .catch((error)=>{
       console.log(error);

@@ -27,7 +27,7 @@ export class DoService {
 
   allTq(){
     console.log("in service's get trivia questions")
-    return this._http.get('/api/tqs/dashboard')
+    return this._http.get('/api/dashboard')
     .map(Response=>Response.json()).toPromise();
   }
 

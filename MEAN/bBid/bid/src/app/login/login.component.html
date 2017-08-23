@@ -1,0 +1,11 @@
+<h2>Login Name: </h2>
+<form (submit)=register(newUser)>
+  <p *ngIf="username.invalid"><em>Please tell us your name</em></p>
+  <p><input type="text" name="username"
+    [(ngModel)]="newUser.username"
+    #username="ngModel"
+    minlength=4
+    required=true
+  ></p>
+  <input [disabled]='!username.valid' type="submit" name='' value='Enter'>
+</form>
